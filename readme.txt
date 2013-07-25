@@ -51,7 +51,7 @@ Click while logged into wordpress
 Result: jetpack counted and our plugin did not count
 Note: This seems proper to us. Why would you want stats on your logged in users for view counts? Another advantage of our plugin.
 
-Additional Note: Our plugin only multiplies the amount by page views, not by comment counts. We just added the comments count as a bonus to see the activity happening per post.
+Additional Note: Our plugin only multiplies the amount by page views, not by comment counts. We just added the comments count as a bonus to see the activity happening per post. Comment Counts may become available in the future!
 
 **DISClAIMER:** SlickRemix **DOES NOT** code for IE. If it works awesome, if not we highly suggest one of the following modern browsers: [Google Chrome](https://www.google.com/intl/en/chrome/browser/), [Safari](http://www.apple.com/safari/) or [Firefox](http://www.mozilla.org/en-US/firefox/).
 
@@ -72,7 +72,7 @@ You can find answers to your questions or just drop us a line at our [Support Fo
 
 = Are there Extensions for this plugin? =
 
-Not at this time.
+YES, When you purchase a subscription the [PRO Extension](http://www.slickremix.com/product/post-profit-stats-pro-extension/) will become available for download FREE on your "My Account" Page.
 
 == Screenshots ==
 1. Author Total Stats page in the wordpress admin area which allows you to sort by date. You can click on any username to show the Author Details Stats.
