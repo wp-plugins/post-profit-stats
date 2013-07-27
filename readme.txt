@@ -36,18 +36,13 @@ We have also done the following tests to make sure the view counts are as accura
 Made external link to post
 Result: jetpack counted the same as our plugin
 
-Clicked: from internal link on website
-Result: jetpack counted the same as our plugin
+Clicked: from internal link on website || Result: jetpack counted the same as our plugin
 
-Clicked: from external link on Facebook
-Result: jetpack counted the same as our plugin
+Clicked: from external link on Facebook || Result: jetpack counted the same as our plugin
 
-Clicked: from external mail link
-Result: jetpack counted the same as our plugin
+Clicked: from external mail link || Result: jetpack counted the same as our plugin
 
-Clicked: while logged into wordpress
-Result: jetpack counted and our plugin did not count
-Note: This seems proper to us. Why would you want stats on your logged in Authors for view counts? Another advantage of our plugin.
+Clicked: while logged into wordpress || Result: jetpack counted and our plugin did not count || Note: This seems proper to us. Why would you want stats on your logged in Authors for view counts? Another advantage of our plugin.
 
 Additional Note: Our plugin only multiplies the amount by page views, not by comment counts. We just added the comments count as a bonus to see the activity happening per post. Comment Counts may become available in the future!
 
