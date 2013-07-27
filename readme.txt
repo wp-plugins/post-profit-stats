@@ -44,7 +44,7 @@ Clicked: from external mail link || Result: jetpack counted the same as our plug
 
 Clicked: while logged into wordpress || Result: jetpack counted and our plugin did not count || Note: This seems proper to us. Why would you want stats on your logged in Authors for view counts? Another advantage of our plugin.
 
-Additional Note: Our plugin only multiplies the amount by page views, not by comment counts. We just added the comments count as a bonus to see the activity happening per post. Comment Counts may become available in the future!
+Additional Note: Our plugin only multiplies the amount by page views, not by comment counts. We just added the comments count as a bonus to see the activity happening per post.
 
 **DISClAIMER:** SlickRemix **DOES NOT** code for IE. If it works awesome, if not we highly suggest one of the following modern browsers: [Google Chrome](https://www.google.com/intl/en/chrome/browser/), [Safari](http://www.apple.com/safari/) or [Firefox](http://www.mozilla.org/en-US/firefox/).
 
