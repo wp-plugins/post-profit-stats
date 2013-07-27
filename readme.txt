@@ -9,9 +9,7 @@ License: GPLv2 or later
 Do you pay authors for page views? Let our plugin calculate the amount per post view and give you totals by date.
 
 == Description ==
-The basic idea of this plugin is so you can see the total number of post views per user or author with a total and grand total. You can also sort by date, allowing you to see your authors totals.
-
-The way we have developed this plugin as you will see, organizes the Author and their totals. If you click on an Author you will be taken to that Author's page displaying all of their posts including stats and totals.
+The basic idea of this plugin is so you can see the total number of post views per user/author with totals and grand totals. You can also sort by date.
 
 Setting this up could not be easier. Just add the amount per view you are paying your authors or whomever. That’s it! Our system will calculate the total number of views your webpage has received and multiply that by the amount you entered.
 
