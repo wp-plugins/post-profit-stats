@@ -31,7 +31,7 @@ Setting this up could not be easier. Just add the amount per view you are paying
   7. When you purchase a subscription the [PRO Extension](http://www.slickremix.com/product/post-profit-stats-pro-extension/) will become available for download FREE on your "My Account" Page.
 
 = Tests =
-We have also done the following tests to make sure the view counts are as accurate as possible. Here are a few. Again even if you have a caching plugin installed this plugin will still track views, similar to google.
+We've also done the following tests to make sure the view counts are as accurate as possible. Here are a few. Again even if you have a caching plugin installed this plugin will still track views, similar to google.
 
 Made external link to post
 Result: jetpack counted the same as our plugin
