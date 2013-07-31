@@ -1,3 +1,0 @@
-[12-Jul-2013 14:01:03] PHP Fatal error:  Call to a member function get_results() on a non-object in /home/remix/public_html/testblog/wp-content/plugins/post-profit-stats/admin/pps-single-author-ajax.php on line 27
-[12-Jul-2013 14:02:10] PHP Fatal error:  Call to a member function get_results() on a non-object in /home/remix/public_html/testblog/wp-content/plugins/post-profit-stats/admin/pps-single-author-ajax.php on line 27
-[12-Jul-2013 14:02:10] PHP Fatal error:  Call to a member function get_results() on a non-object in /home/remix/public_html/testblog/wp-content/plugins/post-profit-stats/admin/pps-single-author-ajax.php on line 27
