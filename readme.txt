@@ -78,4 +78,5 @@ YES, When you purchase a subscription the [PRO Extension](http://www.slickremix.
 1. Author Total Stats page in the wordpress admin area which allows you to sort by date. You can click on any username to show the Author Details Stats.
 2. The setting available for this plugin. Amount per view and how many users to display per page. Also color options for the stats numbers and usernames.
 3. Author Detail Stats. Shows the breakdown of post views for an author. 
-4. The Help/System Info Page.
+4. Deatiled Stats for Authors who login. They can only view their stats, no one elses.
+5. The Help/System Info Page.
