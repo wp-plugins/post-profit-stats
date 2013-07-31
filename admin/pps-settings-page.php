@@ -6,43 +6,71 @@ include('pps-settings-checked.php');
 
 if(isset($_GET['to']) and isset($_GET['from'])) {
 	$fromdate = $_GET['from'];
-	$fromdate = date("Y-m-d",strtotime($fromdate)); 
+	$fromdate = date_i18n("Y-m-d",strtotime($fromdate)); 
 	$todate = $_GET['to'];
-	$todate = date("Y-m-d",strtotime($todate));
+	$todate = date_i18n("Y-m-d",strtotime($todate));
 	
 	$_POST['from'] = $fromdate;
 	$_POST['to'] = $todate ;
 }
 
 if(!isset($_POST['to']) and !isset($_POST['from'])) {
-  $_POST['from'] = date('Y-m-d');
-  $_POST['to'] = date('Y-m-d');
+  $_POST['from'] = date_i18n('Y-m-d');
+  $_POST['to'] = date_i18n('Y-m-d');
 }
 
 $setfromdate = $_POST['from'];
 $settodate = $_POST['to'];
 
-$table_name = $wpdb->prefix . "slick_post_profit_work";
-
-if(isset($_POST['to']) and isset($_POST['from'])) {
-
-	$select = "
-	SELECT *,count(*) as countslick
-	FROM $table_name
-	WHERE create_date >='".$_POST['from']."' 
-	AND create_date<='".$_POST['to']."' 
-	GROUP BY post_id desc
-	";
-} else {
-	$select = "
-	SELECT *,count(*) as countslick
-	FROM $table_name
-	WHERE 1=1
-	GROUP BY post_id desc
-	";
+// THIS IS THE ENTERPRISE VERSION
+if(is_plugin_active('post-profit-stats-ent/post-profit-stats-ent.php')) { 
+	global $slickpps_ent_table_name;
+	global $slickpps_db;
+	
+	if(isset($_POST['to']) and isset($_POST['from'])) {
+	
+		$select = "
+		SELECT *,count(*) as countslick
+		FROM $slickpps_ent_table_name
+		WHERE create_date >='".$_POST['from']."' 
+		AND create_date<='".$_POST['to']."' 
+		GROUP BY post_id desc
+		";
+	} else {
+		$select = "
+		SELECT *,count(*) as countslick
+		FROM $slickpps_ent_table_name
+		WHERE 1=1
+		GROUP BY post_id desc
+		";
+	}
+	
+	$tabledata = $slickpps_db->get_results($select);
+}// CLOSE ENTERPRISE VERSION
+else	{
+	$table_name = $wpdb->prefix . "slick_post_profit_stats";
+	
+	if(isset($_POST['to']) and isset($_POST['from'])) {
+	
+		$select = "
+		SELECT *,count(*) as countslick
+		FROM $table_name
+		WHERE create_date >='".$_POST['from']."' 
+		AND create_date<='".$_POST['to']."' 
+		GROUP BY post_id desc
+		";
+	} else {
+		$select = "
+		SELECT *,count(*) as countslick
+		FROM $table_name
+		WHERE 1=1
+		GROUP BY post_id desc
+		";
+	}
+	
+	$tabledata = $wpdb->get_results($select);
 }
-
-$tabledata = $wpdb->get_results($select);
+// CLOSE ENTERPRISE VERSION
 
 ?>
 <?php
@@ -67,12 +95,12 @@ jQuery( "#close-settings-panel" ).panel( "close" );
     <form method="post" action="admin.php?page=pps-settings-page" data-theme="c" id="slick-date-selector">
       <div data-role="fieldcontain" class="slickpps-start-date-input-wrap">
         <label for="start_date" >From: </label>
-        <input class="date-pick"  data-role="none" data-mini="true" type="date" name="from" data-theme="c" id="from" value="<?php if(!empty($setfromdate)) {echo $setfromdate; $setfromdate = str_replace('-', '', $setfromdate);} else {echo date('Y-m-d');}  ?>" />
+        <input class="date-pick"  data-role="none" data-mini="true" type="date" name="from" data-theme="c" id="from" value="<?php if(!empty($setfromdate)) {echo $setfromdate; $setfromdate = str_replace('-', '', $setfromdate);} else {echo date_i18n('Y-m-d');}  ?>" />
         <!--want the date to be monthly, use this -> date('Y-m-d',strtotime("-1 month")); --> 
       </div>
       <div data-role="fieldcontain" class="slickpps-end-date-input-wrap">
         <label for="end_date">To: </label>
-        <input type="date"    data-role="none" data-mini="true" class="date-pick" name="to" data-theme="c" id="to" value="<?php if(!empty($settodate)) {echo $settodate; $settodate = str_replace('-', '', $settodate);} else {echo date('Y-m-d');} ?>" />
+        <input type="date"    data-role="none" data-mini="true" class="date-pick" name="to" data-theme="c" id="to" value="<?php if(!empty($settodate)) {echo $settodate; $settodate = str_replace('-', '', $settodate);} else {echo date_i18n('Y-m-d');} ?>" />
       </div>
       <div class="slickpps-submit-date-search-input-wrap">
         <input type="submit"  data-inline="true" class="button" data-theme="c" value="<?php _e('Submit') ?>" />

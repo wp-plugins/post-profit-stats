@@ -3,60 +3,103 @@ function pps_single_author (){
 
 global $wpdb;
 
-
-$table_name = $wpdb->prefix . "slick_post_profit_work";
-
 if(isset($_GET["pps_user_id"])) {
 	$_POST["pps_user_id"] = $_GET["pps_user_id"];
 }
+
+ 	  $fromdate = $_GET["fromdate"];
+	  $fromdate = date_i18n("Y-m-d",strtotime($fromdate)); 
+	  $todate = $_GET["todate"];
+	  $todate = date_i18n("Y-m-d",strtotime($todate));
+	  
+if(is_plugin_active('post-profit-stats-ent/post-profit-stats-ent.php')) { 
+	
+	global $slickpps_ent_table_name;
+	global $slickpps_db;
+	
+	if(isset($_GET["todate"]) and isset($_GET["fromdate"])) {
+	
+	  $select = "
+	  SELECT *,count(*) as countslick
+	  FROM $slickpps_ent_table_name
+	  WHERE create_date >='".$fromdate."' 
+	  AND create_date<='".$todate."' 
+	  GROUP BY post_id desc
+	  ";
+	
+	}
+	if(!isset($_POST['to']) and !isset($_POST['from']) and !isset($_GET["todate"]) and !isset($_GET["fromdate"])) {
+	  $_POST['from'] = date_i18n('Y-m-d');
+	  $_POST['to'] = date_i18n('Y-m-d');
+	  
+	  $select = "
+		SELECT *,count(*) as countslick
+		FROM $slickpps_ent_table_name
+		WHERE create_date >='".$_POST['from']."' 
+		AND create_date<='".$_POST['to']."' 
+		GROUP BY post_id desc
+		";
+	}
+	if(isset($_POST['to']) and isset($_POST['from'])) {
+	
+		$select = "
+		SELECT *,count(*) as countslick
+		FROM $slickpps_ent_table_name
+		WHERE create_date >='".$_POST['from']."' 
+		AND create_date<='".$_POST['to']."' 
+		GROUP BY post_id desc
+		";
+	} 
+	
+	$tabledata = $slickpps_db->get_results($select);
+}// CLOSE ENTERPRISE VERSION
 	 
+else {	
+
+	$table_name = $wpdb->prefix . "slick_post_profit_stats";
 	
-if(isset($_GET["todate"]) and isset($_GET["fromdate"])) {
+	if(isset($_GET["todate"]) and isset($_GET["fromdate"])) {
+		 
+		$select = "
+		SELECT *,count(*) as countslick
+		FROM $table_name
+		WHERE create_date >='".$fromdate."' 
+		AND create_date<='".$todate."' 
+		GROUP BY post_id desc
+	    ";
 	
-	$fromdate = $_GET["fromdate"];
-	$fromdate = date("Y-m-d",strtotime($fromdate)); 
-	$todate = $_GET["todate"];
-	$todate = date("Y-m-d",strtotime($todate));
-
-	$select = "
-	SELECT *,count(*) as countslick
-	FROM $table_name
-	WHERE create_date >='".$fromdate."' 
-	AND create_date<='".$todate."' 
-	GROUP BY post_id desc
-";
-
+	}
+	if(!isset($_POST['to']) and !isset($_POST['from']) and !isset($_GET["todate"]) and !isset($_GET["fromdate"])) {
+	  $_POST['from'] = date_i18n('Y-m-d');
+	  $_POST['to'] = date_i18n('Y-m-d');
+	  
+	  $select = "
+		SELECT *,count(*) as countslick
+		FROM $table_name
+		WHERE create_date >='".$_POST['from']."' 
+		AND create_date<='".$_POST['to']."' 
+		GROUP BY post_id desc
+		";
+	}
+	if(isset($_POST['to']) and isset($_POST['from'])) {
+	
+		$select = "
+		SELECT *,count(*) as countslick
+		FROM $table_name
+		WHERE create_date >='".$_POST['from']."' 
+		AND create_date<='".$_POST['to']."' 
+		GROUP BY post_id desc
+		";
+	} 
+	
+	$tabledata = $wpdb->get_results($select);
 }
-if(!isset($_POST['to']) and !isset($_POST['from']) and !isset($_GET["todate"]) and !isset($_GET["fromdate"])) {
-  $_POST['from'] = date('Y-m-d');
-  $_POST['to'] = date('Y-m-d');
-  
-  $select = "
-	SELECT *,count(*) as countslick
-	FROM $table_name
-	WHERE create_date >='".$_POST['from']."' 
-	AND create_date<='".$_POST['to']."' 
-	GROUP BY post_id desc
-	";
-}
-if(isset($_POST['to']) and isset($_POST['from'])) {
-
-	$select = "
-	SELECT *,count(*) as countslick
-	FROM $table_name
-	WHERE create_date >='".$_POST['from']."' 
-	AND create_date<='".$_POST['to']."' 
-	GROUP BY post_id desc
-	";
-} 
-
 $userid = $_POST["pps_user_id"];
 
 $setfromdate = $_POST['from'];
 $settodate = $_POST['to'];
 
  
-$tabledata = $wpdb->get_results($select);
 ?>
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css" />
 <script type="text/javascript">
@@ -69,22 +112,44 @@ jQuery(document).bind("mobileinit", function () {
 jQuery( "#close-settings-panel" ).panel( "close" );
 </script>
 <div data-role="page" id="page" style="position:relative;">
-  <div data-role="header" data-theme="c" class="sr-header"><a href="#mypanel" class="ui-btn-right header-settings-btn" style="margin-right: 35px; margin-top: 15px;" data-role="button" data-theme="b" data-icon="bars" data-display="overlay">Settings & Info</a>
+  <div data-role="header" data-theme="c" class="sr-header">
+    <?php if ( is_user_logged_in() && current_user_can( 'author' ) ) { 
+   // we do not want to show the setting options for the author 
+       }
+else { ?>
+    <a href="#mypanel" class="ui-btn-right header-settings-btn" style="margin-right: 35px; margin-top: 15px;" data-role="button" data-theme="b" data-icon="bars" data-display="overlay">Settings & Info</a>
+    <?php } ?>
     <h2> Post Profit Stats</h2>
     <div class="clear"></div>
+    <?php if ( is_user_logged_in() && current_user_can( 'author' ) ) { 
+		?>
+    <div class="slick-click-on-username-note-detail-page">Click submit to view your totals for today or change dates to view different totals.</div>
+    <?php
+       }
+else { ?>
     <div class="slick-click-on-username-note-detail-page">To search a specific user please enter their ID number.</div>
+    <?php } ?>
     <form method="post" data-theme="c" action="admin.php?page=pps-single-author" id="slick-date-selector">
+      <?php if ( is_user_logged_in() && current_user_can( 'author' ) ) {
+    global $current_user;
+      get_currentuserinfo(); ?>
+      <input type="hidden" data-role="none" class="pps_user_id" data-theme="c" name="pps_user_id"  id="pps_user_id" value="<?php echo $current_user->ID; ?>" />
+      <?php }
+else {
+	?>
       <div data-role="fieldcontain" class="slickpps-pps-user-id-date-input-wrap">
         <label for="start_date" >User ID: </label>
-        <input type="text" data-role="none" class="pps_user_id" data-theme="c" name="pps_user_id"  id="pps_user_id" value="<?php if (isset($_POST['pps_user_id'])){echo $_POST["pps_user_id"];}?>" />
+        <input type="text" data-role="none" class="pps_user_id" data-theme="c" name="pps_user_id"  id="pps_user_id" value="<?php
+    if (isset($_POST['pps_user_id'])){echo $_POST["pps_user_id"];}?>" />
       </div>
+      <?php } ?>
       <div data-role="fieldcontain" class="slickpps-start-date-input-wrap">
         <label for="start_date" >From: </label>
-        <input class="date-pick" data-role="none"  data-mini="true" type="date" name="from" data-theme="c" id="from" value="<?php if(isset($_GET["fromdate"])) {echo $fromdate;} else {if(!empty($setfromdate)) {echo $setfromdate;} else {echo date('Y-m-d');}} ?>" />
+        <input class="date-pick" data-role="none"  data-mini="true" type="date" name="from" data-theme="c" id="from" value="<?php if(isset($_GET["fromdate"])) {echo $fromdate;} else {if(!empty($setfromdate)) {echo $setfromdate;} else {echo date_i18n('Y-m-d');}} ?>" />
       </div>
       <div data-role="fieldcontain" class="slickpps-end-date-input-wrap">
         <label for="end_date">To: </label>
-        <input type="date" data-role="none"  data-mini="true" class="date-pick" name="to" data-theme="c" id="to" value="<?php if(isset($_GET["todate"])) {echo $todate;} else { if(!empty($settodate)) {echo $settodate;} else {echo date('Y-m-d');}} ?>" />
+        <input type="date" data-role="none"  data-mini="true" class="date-pick" name="to" data-theme="c" id="to" value="<?php if(isset($_GET["todate"])) {echo $todate;} else { if(!empty($settodate)) {echo $settodate;} else {echo date_i18n('Y-m-d');}} ?>" />
       </div>
       <div class="slickpps-submit-date-search-input-wrap"> 
         <!--<a id="myslicksubmit" data-role="button">Submit</a>-->
@@ -95,7 +160,7 @@ jQuery( "#close-settings-panel" ).panel( "close" );
   </div>
   <div data-role="content" class="sr-content">
     <div class="thumbnail sr_split_plugin_wrap">
-  <?php if(!empty($_POST['pps_user_id'])) { ?>
+      <?php if(!empty($_POST['pps_user_id'])) { ?>
       <?php 
 	$slickpostauthor= array();
 	
@@ -209,7 +274,6 @@ jQuery( "#close-settings-panel" ).panel( "close" );
           
           <div class='transaction-wrap'>
             <h1>$
-            
               <?php
 			  
 			 if (!empty($user_profile_field) && $user_profile_field !== ' '){
@@ -226,7 +290,6 @@ jQuery( "#close-settings-panel" ).panel( "close" );
           
         </div>
         <!--/trans-colum-->
-        
         
         <?php 
 				} 
@@ -266,15 +329,15 @@ jQuery( "#close-settings-panel" ).panel( "close" );
         <!--/trans-colum-->
         <div class='clear'></div>
       </div>
-      <!--/ custom-sr-wrap--> 
-    <?php 
+      <!--/ custom-sr-wrap-->
+      <?php 
 		}
 	} 
 	
   }
 	?>
     </div>
-    <!--/sr-split-plugin-wrap-->
+    <!--/sr-split-plugin-wrap--> 
     <a class="glogo-logo" href="http://guardianlv.com/" target="_blank"></a> <a class="pps-settings-admin-slick-logo" href="http://www.slickremix.com" target="_blank"></a> </div>
   <!--/sr-content-->
   <?php include('includes/panel.php'); ?>

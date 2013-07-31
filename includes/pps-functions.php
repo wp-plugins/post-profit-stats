@@ -2,9 +2,6 @@
 /************************************************
  	Function file for pps
 ************************************************/
-
-
-
 if(is_admin()){
 	add_action('admin_menu', 'pps_Main_Menu');
 function pps_Main_Menu() {
@@ -12,7 +9,7 @@ function pps_Main_Menu() {
 add_action( 'admin_init', 'pps_register_mysettings' ); 
 add_menu_page('Post Profit Stats', 'Post Profit Stats', 'manage_options', 'pps-settings-page', 'pps_settings_page', 'div', 98);
 add_submenu_page( 'pps-settings-page', 'Authors Total Stats' , 'Authors Total Stats', 'manage_options', 'pps-settings-page', 'pps_settings_page');
-add_submenu_page( 'pps-settings-page', 'Author Detail Stats' , 'Author Detail Stats', 'manage_options', 'pps-single-author', 'pps_single_author');
+add_submenu_page( 'pps-settings-page', 'Author Detail Stats' , 'Author Detail Stats', 'read', 'pps-single-author', 'pps_single_author');
 add_submenu_page( 'pps-settings-page', 'System Info' , 'Help / System Info', 'manage_options', 'pps-system-info-submenu-page', 'pps_system_info_page');
 	}
 }
@@ -53,5 +50,9 @@ if (isset($_GET['page']) && $_GET['page'] == 'pps-settings-page' || isset($_GET[
 	 // wp_enqueue_script( 'pps_settings_js', plugins_url( 'admin/js/admin.js',  dirname(__FILE__) ) ); 
   }
 }
-
+function add_theme_caps() {
+   $role = get_role( 'author' );
+   $role->add_cap( 'read' );
+}
+add_action( 'admin_init', 'add_theme_caps');
 ?>

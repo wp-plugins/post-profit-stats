@@ -3,7 +3,7 @@ Contributors: slickremix
 Tags:  Posts, Profit, Sales, Post Count, Stats, Statistics, WordPress Stats, Views, plugin, pages, posts, page, user, authors, author, wp stats, jetpack
 Requires at least: 3.5.0
 Tested up to: 3.5.2
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 
 Do you pay authors for page views? Let our plugin calculate the amount per post view and give you totals by date.
@@ -18,17 +18,19 @@ Setting this up could not be easier. Just add the amount per view you are paying
   2. ONLY allows you to set ONE amount of money for ALL Authors per view.
   3. If you are logged in and viewing your posts they will not be counted. Only if you are logged out. (Authors proof-reading their posts dont get counted)
   4. Change the Sales Figures & Total Sales colors.
-  5. Views get counted even with caching plugins. That’s right it will work!
-  6. The information is recorded to your database.
+  5. Author's can login to view their details stats.
+  6. Views get counted even with caching plugins. That’s right it will work!
+  7. The information is recorded to your database.
 
 = The Pro Extension does the following =
   1. Allows you to track up to 50 Authors.
   2. Allows you to set an amount of money paid to EACH individual Author per view.
   3. If you are logged in and viewing your posts they will not be counted. Only if you are logged out.
   4. Change the Sales Figures & Total Sales colors.
-  5. Views get counted even with caching plugins. That’s right it will work!
-  6. The information is recorded to your database.
-  7. When you purchase a subscription the [PRO Extension](http://www.slickremix.com/product/post-profit-stats-pro-extension/) will become available for download FREE on your "My Account" Page.
+  5. Author's can login to view their details stats!
+  6. Views get counted even with caching plugins. That’s right it will work!
+  7. The information is recorded to your database.
+  8. When you purchase a subscription the [PRO Extension](http://www.slickremix.com/product/post-profit-stats-pro-extension/) will become available for download FREE on your "My Account" Page.
 
 = Tests =
 We've also done the following tests to make sure the view counts are as accurate as possible. Here are a few. Again even if you have a caching plugin installed this plugin will still track views, similar to google.
@@ -57,6 +59,11 @@ Additional Note: Our plugin only multiplies the amount by page views, not by com
   * Extract the zip file and just drop the contents in the wp-content/plugins/ directory of your WordPress installation and then activate the Plugin from Plugins page. 
 
 == Changelog ==
+= Version 1.0.1 July 30th, 2013 =
+ * FIXED: Timestamp of post view is equal to the Current Local Time set in the wordpress settings area.
+ * IMPROVED: Database Table revamp to speed things up.
+ * ADDED: Author's can login to view their details stats as a BONUS.
+
 = Version 1.0.0 July 25th, 2013 =
  * Initial Release
 

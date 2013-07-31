@@ -30,6 +30,11 @@ if(is_plugin_active('post-profit-stats-pro/post-profit-stats-pro.php')) { ?>
      
   <?php include('../wp-content/plugins/post-profit-stats-pro/includes/pps-pro-settings-fields.php'); } ?>
    
+   
+    <?php	if(is_plugin_active('post-profit-stats-ent/post-profit-stats-ent.php')) {
+          echo ' <br/>';
+		  include('../wp-content/plugins/post-profit-stats-ent/includes/pps-ent-settings-fields.php'); }
+		 ?>
 	
     
     <?php settings_fields( 'myoption-group-pps' ); ?>
@@ -40,7 +45,7 @@ if(is_plugin_active('post-profit-stats-pro/post-profit-stats-pro.php')) { ?>
 				echo'<h3>Settings</h3><p>This FREE version shows up to 10 users with stats, and one amount per view for all authors. Get up to 50 users and set amount for individual authors per view with our <a href="http://www.slickremix.com/product/post-profit-stats-pro-extension/" target="_blank">Pro Version</a>.</p><label for="text-1">Amount Per View.</label>';		
 			}
 		 ?>
-    
+        
     <input type="text" data-clear-btn="true" name="my_option_name1" id="text-1" value="<?php echo get_option('my_option_name1'); ?>" placeholder="default is .002">
     <label for="text-2">
      <?php	if(is_plugin_active('post-profit-stats-pro/post-profit-stats-pro.php')) {
@@ -53,13 +58,6 @@ if(is_plugin_active('post-profit-stats-pro/post-profit-stats-pro.php')) { ?>
     <input type="text" data-clear-btn="true" name="my_option_name2" id="text-2" value="<?php echo get_option('my_option_name2'); ?>" placeholder="default is 1">
     
     <!-- additional fields for future use 
-    <input type="text" data-clear-btn="true" name="my_option_name5" id="text-5" value="< ?php echo get_option('my_option_name5'); ?>" placeholder="default is .30">
-    <label for="text-6">Text Here</label>
-    <input type="text" data-clear-btn="true" name="my_option_name6" id="text-6" value="< ?php echo get_option('my_option_name6'); ?>" placeholder="default is 3.9%">
-    <label for="text-7">Text Here</label>
-    <input type="text" data-clear-btn="true" name="my_option_name7" id="text-7" value="< ?php echo get_option('my_option_name7'); ?>" placeholder="default is .30">
-    <label for="text-8">Text Here</label>
-    <input type="text" data-clear-btn="true" name="my_option_name8" id="text-8" value="< ?php echo get_option('my_option_name8'); ?>" placeholder="default is 3.9%">
     <label for="text-9">Text Here</label>
     <input type="text" data-clear-btn="true" name="my_option_name9" id="text-9" value="< ?php echo get_option('my_option_name9'); ?>" placeholder="default is .30">--> 
     
@@ -70,8 +68,8 @@ if(is_plugin_active('post-profit-stats-pro/post-profit-stats-pro.php')) { ?>
     <label for="text-11">The color of the grand total stats and author detail stats username</label>
     <input type="color" data-clear-btn="true" name="my_option_name11" id="text-11" value="<?php echo get_option('my_option_name11'); ?>">
     <div class="sr-form-border"> <a href="#mypanel"   data-role="button" data-mini="true" data-inline="true">Cancel</a>
-      <input type="submit"  data-role="button" data-mini="true" data-inline="true" data-icon="check" data-theme="b" value="<?php _e('Save') ?>" />
-    </div>
+      <input type="submit"  data-role="button" data-mini="true" data-inline="true" data-icon="check" data-theme="b" value="<?php _e('Save') ?>" />  
+    </div><br/> <br/>
   </form>
   <!-- /panel --> 
 </div>
