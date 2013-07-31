@@ -16,7 +16,7 @@ Setting this up could not be easier. Just add the amount per view you are paying
 = The FREE version does the following =
   1. Allows you to track up to 10 Authors
   2. ONLY allows you to set ONE amount of money for ALL Authors per view.
-  3. If you are logged in and viewing your posts they will not be counted. Only if you are logged out. (Authors proof-reading their posts dont get counted)
+  3. If you are logged in and viewing your posts they will not be counted. Only if you are logged out. (Authors proof-reading their posts don't get counted)
   4. Change the Sales Figures & Total Sales colors.
   5. Author's can login to view their details stats.
   6. Views get counted even with caching plugins. That’s right it will work!
