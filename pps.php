@@ -77,7 +77,7 @@ register_activation_hook(__FILE__,'slick_post_profit_stats_db_install');
 function my_slick_pps_script_enqueuer() {
    // nothing in this script yet, just prepped for future use.	
    wp_register_script( "my_ppsChecker_script", WP_PLUGIN_URL.'/post-profit-stats/admin/js/my_ppsChecker_script.js', array('jquery') );
-   wp_localize_script( 'my_ppsChecker_script', 'mySlickPPSAjax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' )));        
+   wp_localize_script( 'my_ppsChecker_script', 'myPPSAjax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' )));        
 
    wp_enqueue_script( 'jquery' );
    wp_enqueue_script( 'my_ppsChecker_script' );
@@ -88,7 +88,13 @@ add_action( 'init', 'my_slick_pps_script_enqueuer' );
 function add_js_to_wp_footer(){ 
 if(is_single())
 	{
+
+
+
 ?>
+
+<?php include_once( ABSPATH . 'wp-admin/includes/plugin.php' ); ?>
+
 <script type="text/javascript">
 	jQuery(document).ready(function(){
 		
@@ -101,7 +107,7 @@ if(is_single())
 
 		jQuery.ajax({
 			type: 'POST',
-            url: mySlickPPSAjax.ajaxurl,
+            url: myPPSAjax.ajaxurl,
 			<?php if(is_plugin_active('post-profit-stats-ent/post-profit-stats-ent.php')) {  ?>
 			data: {action: "view_site_description_custom", post_id: postID, post_author: postAuthor, create_date: createDate  },
 			<?php } else	{?>
