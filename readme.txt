@@ -11,9 +11,9 @@ Do you pay authors for page views? Let our plugin calculate the amount per post 
 == Description ==
 See the total number of post views per user/author with detailed totals and grand totals. You can also sort by date.
 
-Setting this up could not be any easier. Just add the amount per view you are paying your authors or whomever. That’s it! Our system will calculate the total number of views your webpage has received and multiply that by the amount you entered.
+Setting this up could not be any easier. Just add the amount per view you are paying your authors or whomever. That’s it! Our system will calculate the total number of views your webpage has received and multiply that by the amount you entered. [Read more](http://www.slickremix.com/2013/07/30/why-use-post-profits-stats/) about how you can really make money with this plugin! 
 
-= The FREE version does the following =
+= The FREE version =
   1. Allows you to track up to 10 Authors
   2. ONLY allows you to set ONE amount of money for ALL Authors per view.
   3. If you are logged in and viewing your posts they will not be counted. Only if you are logged out. (Authors proof-reading their posts don't get counted)
@@ -22,7 +22,7 @@ Setting this up could not be any easier. Just add the amount per view you are pa
   6. Views get counted even with caching plugins. That’s right it will work!
   7. The information is recorded to your database.
 
-= The Pro Extension does the following =
+= The Pro Extension =
   1. Allows you to track up to 50 Authors.
   2. Allows you to set an amount of money paid to EACH individual Author per view.
   3. If you are logged in and viewing your posts they will not be counted. Only if you are logged out.
@@ -31,6 +31,11 @@ Setting this up could not be any easier. Just add the amount per view you are pa
   6. Views get counted even with caching plugins. That’s right it will work!
   7. The information is recorded to your database.
   8. When you purchase a subscription the [PRO Extension](http://www.slickremix.com/product/post-profit-stats-pro-extension/) will become available for download FREE on your "My Account" Page.
+
+= The Enterprise Extension (Includes all the Pro features plus more) =
+  1. Allows you to track unlimited users 
+  2. Track all Post Views in a separate database from your WordPress install. The advantage of a separate database is that you do not take up a lot of space in the database counting views and slowing down your website. We have made it so easy that all you have to do is add a database to your server and fill in the connection info in the settings panel of the setting page! The extension does the rest of the leg work. Yup, It’s that easy! This extension also lets you set a different payment amount per post view to each individual author on the user profile page.
+  3. Take a look here for [pricing](http://www.slickremix.com/product/post-profit-stats-enterprise-extension/). 
 
 = Tests =
 We've also done the following tests to make sure the view counts are as accurate as possible. Here are a few. Again even if you have a caching plugin installed this plugin will still track views, similar to google.
