@@ -53,8 +53,6 @@ Clicked: while logged into wordpress || Result: jetpack counted and our plugin d
 
 Additional Note: Our plugin only multiplies the amount by page views, not by comment counts. We just added the comments count as a bonus to see the activity happening per post.
 
-**DISClAIMER:** SlickRemix **DOES NOT** code for IE. If it works awesome, if not we highly suggest one of the following modern browsers: [Google Chrome](https://www.google.com/intl/en/chrome/browser/), [Safari](http://www.apple.com/safari/) or [Firefox](http://www.mozilla.org/en-US/firefox/).
-
 == Installation ==
 
 = Install from WordPress Dashboard =
