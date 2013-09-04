@@ -2,7 +2,7 @@
 Contributors: slickremix
 Tags:  Posts, Profit, Sales, Post Count, Stats, Statistics, WordPress Stats, Views, plugin, pages, posts, page, user, authors, author, wp stats, jetpack
 Requires at least: 3.5.0
-Tested up to: 3.5.2
+Tested up to: 3.6
 Stable tag: 1.0.1
 License: GPLv2 or later
 
