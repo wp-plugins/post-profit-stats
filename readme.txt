@@ -3,7 +3,7 @@ Contributors: slickremix
 Tags:  Posts, Profit, Sales, Post Count, Stats, Statistics, WordPress Stats, Views, plugin, pages, posts, page, user, authors, author, wp stats, jetpack
 Requires at least: 3.5.0
 Tested up to: 3.6.1
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 
 Do you pay authors for page views? Let our plugin calculate the amount per post view and give you totals by date.
@@ -35,7 +35,7 @@ Setting this up could not be easier. Simply add the amount per view you are payi
 = The Enterprise Extension (Includes all the Pro features plus more) =
   1. Track unlimited users. 
   2. Track all Post Views in a separate database from your WordPress install. The advantage of a separate database is that you do not take up a lot of space in the database counting views and slowing down your website. We have made it so easy that all you have to do is add a database to your server and fill in the connection info in the settings panel of the setting page! The extension does the rest of the leg work. Yup, It’s that easy! This extension also lets you set a different payment amount per post view to each individual author on the user profile page.
-  3. Take a look here for [pricing](http://www.slickremix.com/product/post-profit-stats-enterprise-extension/). 
+  3. Take a look here for [Enterprise Extension](http://www.slickremix.com/product/post-profit-stats-enterprise-extension/). 
 
 = Tests =
 We've also done the following tests to make sure the view counts are as accurate as possible. Here are a few. Again even if you have a caching plugin installed this plugin will still track views, similar to google.
@@ -62,6 +62,9 @@ Additional Note: Our plugin only multiplies the amount by page views, not by com
   * Extract the zip file and just drop the contents in the wp-content/plugins/ directory of your WordPress installation and then activate the Plugin from Plugins page. 
 
 == Changelog ==
+= Version 1.0.2 September 13th, 2013 =
+ * CHANGED: New version DOES NOT require Monthly or Yearly subscriptions anymore but only a 1 time payment (includes FREE updates for lifetime of plugin)
+
 = Version 1.0.1 July 30th, 2013 =
  * FIXED: Timestamp of post view is equal to the Current Local Time set in the wordpress settings area.
  * IMPROVED: Database Table revamp to speed things up.
