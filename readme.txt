@@ -1,6 +1,6 @@
 === Post Profit Stats ===
 Contributors: slickremix
-Tags:  Posts, Profit, Sales, Post Count, Stats, Statistics, WordPress Stats, Views, plugin, pages, posts, page, user, authors, author, wp stats, jetpack
+Tags:  Posts, Profit, Sales, Post Count, Stats, Statistics, WordPress Stats, Views, plugin, pages, posts, page, user, authors, author, wp stats, page views, track, tracking, jetpack, jetpack stats, profit, news
 Requires at least: 3.5.0
 Tested up to: 3.6.1
 Stable tag: 1.0.2
@@ -32,7 +32,7 @@ Setting this up could not be easier. Simply add the amount per view you are payi
   7. The information is recorded to your database.
   8. When you purchase a subscription the [PRO Extension](http://www.slickremix.com/product/post-profit-stats-pro-extension/) will become available for download FREE on your "My Account" Page.
 
-= The Enterprise Extension (Includes all the Pro features plus more) =
+= The Enterprise Extension (Includes ALL the Pro features plus more) =
   1. Track unlimited users. 
   2. Track all Post Views in a separate database from your WordPress install. The advantage of a separate database is that you do not take up a lot of space in the database counting views and slowing down your website. We have made it so easy that all you have to do is add a database to your server and fill in the connection info in the settings panel of the setting page! The extension does the rest of the leg work. Yup, It’s that easy! This extension also lets you set a different payment amount per post view to each individual author on the user profile page.
   3. Take a look here for [Enterprise Extension](http://www.slickremix.com/product/post-profit-stats-enterprise-extension/). 
