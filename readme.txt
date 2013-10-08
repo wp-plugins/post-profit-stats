@@ -9,7 +9,7 @@ License: GPLv2 or later
 Do you pay authors for page views? Let our plugin calculate the amount per post view and give you totals by date.
 
 == Description ==
-See the total number of post views per user/author with detailed totals and grand totals. You can also sort by date.
+See the total number of post views per user/author with detailed totals and grand totals. You can also sort by date. Also works with bbpress.
 
 Setting this up could not be easier. Simply add the amount per view you are paying your authors or whomever, and that’s it! Our system will calculate the total number of views your webpage has received and multiply that by the amount you entered. [Read more](http://www.slickremix.com/2013/07/30/why-use-post-profits-stats/) about how you can really make money with this plugin! 
 
