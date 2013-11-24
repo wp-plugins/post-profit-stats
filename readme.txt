@@ -2,7 +2,7 @@
 Contributors: slickremix
 Tags:  Posts, Profit, Sales, Post Count, Stats, Statistics, WordPress Stats, Views, plugin, pages, posts, page, user, authors, author, wp stats, page views, track, tracking, jetpack, jetpack stats, profit, news
 Requires at least: 3.5.0
-Tested up to: 3.6.1
+Tested up to: 3.7.1
 Stable tag: 1.0.2
 License: GPLv2 or later
 
@@ -11,7 +11,7 @@ Do you pay authors for page views? Let our plugin calculate the amount per post 
 == Description ==
 See total number of post views per user/author with detailed totals and grand totals. You can also sort by stats date.
 
-Setting this up couldn't be easier. Simply add the amount per view you are paying your authors or whomever, and that’s it! Our system will calculate the total number of views your webpage has received and multiply that by the amount you entered. [Read more](http://www.slickremix.com/2013/07/30/why-use-post-profits-stats/) about how you can really make money with this plugin! 
+Setting this up could not be easier. Simply add the amount per view you are paying your authors or whomever, and that’s it! Our system will calculate the total number of views your webpage has received and multiply that by the amount you entered. [Read more](http://www.slickremix.com/2013/07/30/why-use-post-profits-stats/) about how you can really make money with this plugin! 
 
 = The FREE version =
   1. Track up to 10 Authors.
