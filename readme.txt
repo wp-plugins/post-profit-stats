@@ -2,14 +2,14 @@
 Contributors: slickremix
 Tags:  Posts, Profit, Sales, Post Count, Stats, Statistics, WordPress Stats, Views, plugin, pages, posts, page, user, authors, author, wp stats, page views, track, tracking, jetpack, jetpack stats, profit, news
 Requires at least: 3.5.0
-Tested up to: 3.7.1
-Stable tag: 1.0.2
+Tested up to: 3.8
+Stable tag: 1.0.3
 License: GPLv2 or later
 
 Do you pay authors for page views? Let our plugin calculate the amount per post view and give you totals by date.
 
 == Description ==
-See the total number of post views per user/author with detailed totals and grand totals. You can also sort by stats date.
+See the total number of post views per author with detailed totals and grand totals. You can also sort by date.
 
 Setting this up could not be easier. Simply add the amount per view you are paying your authors or whomever, and that’s it! Our system will calculate the total number of views your webpage has received and multiply that by the amount you entered. [Read more](http://www.slickremix.com/2013/07/30/why-use-post-profits-stats/) about how you can really make money with this plugin! 
 
@@ -23,14 +23,16 @@ Setting this up could not be easier. Simply add the amount per view you are payi
   7. The information is recorded to your database.
 
 = The Pro Extension =
-  1. Track up to 50 Authors.
+  1. Track UNLIMTED Authors.
   2. Allows you to set an amount of money paid to EACH individual Author per view.
   3. If you are logged in and viewing your posts they will not be counted. Only if you are logged out.
   4. Change the Sales Figures & Total Sales colors.
   5. Author's can login to view their details stats!
   6. Views get counted even with caching plugins. That’s right it will work!
   7. The information is recorded to your database.
-  8. When you purchase a subscription the [PRO Extension](http://www.slickremix.com/product/post-profit-stats-pro-extension/) will become available for download FREE on your "My Account" Page.
+  8. When you purchase the [PRO Extension](http://www.slickremix.com/product/post-profit-stats-pro-extension/) it will become available for download on your "My Account" Page.
+  9. You can change the name ‘Post Profit Stats’ in the menu and main page header to your company name.
+  10. You can remove the slickremix logo in the footer of our plugin pages 
 
 = The Enterprise Extension (Includes ALL the Pro features plus more) =
   1. Track unlimited users. 
@@ -64,6 +66,13 @@ Technical Note: This plugin has been tested and works with bbpress.
   * Extract the zip file and just drop the contents in the wp-content/plugins/ directory of your WordPress installation and then activate the Plugin from Plugins page. 
 
 == Changelog ==
+= Version 1.0.3 January 9th, 2013 =
+ * CHANGED: New UI for Wordpress 3.8 update
+ * ADDED: Plugin activation page now has settings link, support forum link, review link and more.
+ * ADDED: Plugin Activation Tour.
+ * PRO Verions Note: Setting option to rename the menu and page title 'Post Profit Stats', plus it removes the logo in the footer of our pages.
+ * PRO Verions Note: Authors are not limited to 50 anymore, now it is Unlimited.
+
 = Version 1.0.2 September 13th, 2013 =
  * CHANGED: New version DOES NOT require Monthly or Yearly subscriptions anymore but only a 1 time payment (includes FREE updates for lifetime of plugin)
 
@@ -80,11 +89,19 @@ You can find answers to your questions or just drop us a line at our [Support Fo
 
 = Are there Extensions for this plugin? =
 
-YES, When you purchase a subscription the [PRO Extension](http://www.slickremix.com/product/post-profit-stats-pro-extension/) will become available for download FREE on your "My Account" Page.
+YES, When you purchase the [PRO Extension](http://www.slickremix.com/product/post-profit-stats-pro-extension/) it will become available for download on your "My Account" Page.
 
 == Screenshots ==
-1. Author Total Stats page in the wordpress admin area which allows you to sort by date. You can click on any username to show the Author Details Stats.
-2. The setting available for this plugin. Amount per view and how many users to display per page. Also color options for the stats numbers and usernames.
-3. Author Detail Stats. Shows the breakdown of post views for an author. 
-4. Deatiled Stats for Authors who login. They can only view their stats, no one elses.
-5. The Help/System Info Page.
+1. Author Total Stats tour notes.
+2. More details popup in the settings panel.
+3. The setting available for this plugin. Amount per view and how many users to display per page. Also color options for the stats numbers and usernames.
+4. Author Total Stats area which allows you to sort by date. You can also click on any username to show the Author Details Stats.
+5. Admin view for Authors detailed stats showing the breakdown of post views for an author.
+6. The Detailed Stats view for Authors who login. They can only view their stats, no one else’s.
+7. The Help/System Info Page. You can also retake the tour as well.
+8. Pro Version - New settings
+9. Pro Version - Add your company name to change the main menu title, page titles and removes the slickremix logo.
+10. Pro Version - Shows new titles and slickremix logo removed from the footer of page.
+11. Pro Version - Now you can give each author a custom amount per view.
+12. Pro Version - Authors view of their stats. Notice the custom name and how the slickremix logo is gone.
+13. Enterprise Version - Connect to separate database settings.

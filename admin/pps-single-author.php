@@ -119,7 +119,20 @@ jQuery( "#close-settings-panel" ).panel( "close" );
 else { ?>
     <a href="#mypanel" class="ui-btn-right header-settings-btn" style="margin-right: 35px; margin-top: 15px;" data-role="button" data-theme="b" data-icon="bars" data-display="overlay">Settings & Info</a>
     <?php } ?>
-    <h2> Post Profit Stats</h2>
+    <h2><?php	if(is_plugin_active('post-profit-stats-pro/post-profit-stats-pro.php')) {
+     
+    $customPageName =  get_option('my_option_name55');
+    if ($customPageName == ' ' || $customPageName == '') { ?> 
+    Post Profit Stats
+<?php } 
+    else { 
+         echo get_option('my_option_name55');
+        }
+    }
+        else {
+            echo'Post Profit Stats';		
+        }
+?></h2>
     <div class="clear"></div>
     <?php if ( is_user_logged_in() && current_user_can( 'author' ) ) { 
 		?>
@@ -337,8 +350,12 @@ else {
   }
 	?>
     </div>
-    <!--/sr-split-plugin-wrap--> 
-    <a class="glogo-logo" href="http://guardianlv.com/" target="_blank"></a> <a class="pps-settings-admin-slick-logo" href="http://www.slickremix.com" target="_blank"></a> </div>
+    <!--/sr-split-plugin-wrap-->
+    
+<?php $customPageName =  get_option('my_option_name55');
+  		if ($customPageName == ' ' || $customPageName == '') { ?> 
+    		<a class="pps-settings-admin-slick-logo" href="http://www.slickremix.com" target="_blank"></a>
+<?php }?> </div>
   <!--/sr-content-->
   <?php include('includes/panel.php'); ?>
 </div>

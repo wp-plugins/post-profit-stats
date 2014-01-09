@@ -5,14 +5,14 @@ if(is_plugin_active('post-profit-stats-pro/post-profit-stats-pro.php')) {
 	
 	if ($themac !== "no") {
 		update_option('pps_get_checked', "yes");
-		$pps_checked = get_option('pps_get_checked');
+		 $pps_checked = get_option('pps_get_checked');
 	}
 	else {
 		update_option('pps_get_checked', "no");
-		$pps_checked = get_option('pps_get_checked');
+	 $pps_checked = get_option('pps_get_checked');
 	}
 }	
 else	{
-	$pps_checked = "no";
+	 $pps_checked = "no";
 }
 ?>

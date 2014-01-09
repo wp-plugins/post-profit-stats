@@ -5,9 +5,9 @@
   <div data-role="popup" id="popupDialog" data-overlay-theme="a" data-theme="a" data-dismissible="false" style="max-width:450px;" class="ui-corner-all">
     <div data-role="header" data-theme="a" class="ui-corner-top">
       <h1>SlickRemix's Post Profit Stats</h1>
-    </div>
+    </div>	 
     <div data-role="content" data-theme="c" class="ui-corner-bottom ui-content" >
-      <h3 class="ui-title">A Few more details about this plugin</h3>
+      <h3 class="ui-title">A Few more details.</h3>
       <p>The basic idea of this plugin is so you can see the total number of views per user or author with a total and grand total.</p>
       <p>The way we have developed this plugin as you will see, organizes the Author and there totals. Then if you click on an Author you will be taken to that Authors page displaying all of there posts including stats.</p>
       <p>As a bonus we have made it possible for you to change the Sales figures color, and also the Total Sales color too. We figured why not let you have some style while viewing your stats.</p>
@@ -40,16 +40,16 @@ if(is_plugin_active('post-profit-stats-pro/post-profit-stats-pro.php')) { ?>
     <?php settings_fields( 'myoption-group-pps' ); ?>
    
     <?php	if(is_plugin_active('post-profit-stats-pro/post-profit-stats-pro.php')) {
-          echo '<br/><h3>Settings</h3><label for="text-1">Amount Per View.</label>'; }
+          echo '<br/><h3>General Settings</h3><label for="text-1">Amount Per View</label>'; }
    			else {
-				echo'<h3>Settings</h3><p>This FREE version shows up to 10 users with stats, and one amount per view for all authors. Get up to 50 users and set amount for individual authors per view with our <a href="http://www.slickremix.com/product/post-profit-stats-pro-extension/" target="_blank">Pro Version</a>.</p><label for="text-1">Amount Per View.</label>';		
+				echo'<h3>General Settings</h3><p>This FREE version shows up to 10 users with stats, and one amount per view for all authors. Get Unlimited users and set amount for individual authors per view with our <a href="http://www.slickremix.com/product/post-profit-stats-pro-extension/" target="_blank">Pro Version</a>.</p><label for="text-1">Amount Per View</label>';		
 			}
 		 ?>
         
     <input type="text" data-clear-btn="true" name="my_option_name1" id="text-1" value="<?php echo get_option('my_option_name1'); ?>" placeholder="default is .002">
     <label for="text-2">
      <?php	if(is_plugin_active('post-profit-stats-pro/post-profit-stats-pro.php')) {
-          echo 'How many users to show per page. Max 50'; }
+          echo 'How many users to show per page'; }
    			else {
 				echo'How many users to show per page. Max. 10';		
 			}

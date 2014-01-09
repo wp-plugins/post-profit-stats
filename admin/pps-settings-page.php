@@ -90,7 +90,21 @@ jQuery( "#close-settings-panel" ).panel( "close" );
 </script>
 <div data-role="page" id="page" style="position:relative;">
   <div data-role="header" data-theme="c" class="sr-header"><a href="#mypanel" class="ui-btn-right header-settings-btn" style="margin-right: 35px; margin-top: 15px;" data-role="button" data-theme="b" data-icon="bars" data-display="overlay">Settings & Info</a>
-    <h2> Post Profit Stats</h2>
+  
+<h2><?php if(is_plugin_active('post-profit-stats-pro/post-profit-stats-pro.php')) {
+     
+    $customPageName =  get_option('my_option_name55');
+    if ($customPageName == ' ' || $customPageName == '') { ?> 
+    Post Profit Stats 
+<?php } 
+    else { 
+         echo get_option('my_option_name55');
+        }
+    }
+        else {
+            echo'Post Profit Stats';		
+        }
+?></h2>
     <div class="clear"></div>
     <form method="post" action="admin.php?page=pps-settings-page" data-theme="c" id="slick-date-selector">
       <div data-role="fieldcontain" class="slickpps-start-date-input-wrap">
@@ -129,6 +143,8 @@ jQuery( "#close-settings-panel" ).panel( "close" );
 	$comments_counts == 0;
 	$i =1;
 	$post_counter = 0;
+
+if ($tabledata)	{	
 	
     foreach($tabledata as $data) {
 	  $posts = get_post($data->post_id);  	
@@ -170,7 +186,10 @@ jQuery( "#close-settings-panel" ).panel( "close" );
 		 $slickpostauthor[$posts->post_author]['profits_count'] += $profits_count;	
 	  }
 	}
-	
+}// End if $tabledata
+else	{
+	// echo '<br/><div style="text-align:center;"><strong>Please click the settings option and add your database info.<br/>Double check your info including your host if you are still seeing this message after saving your settings.</strong></div>';
+}// End else $tabledata
 	
 	if (get_option('my_option_name2') == '') {
 		$rows_per_page  = '1';
@@ -182,7 +201,7 @@ jQuery( "#close-settings-panel" ).panel( "close" );
 	if ($pps_checked == "yes"){
 		$numrows = count($slickpostauthor);
 		if ($rows_per_page > '50'){
-		  $rows_per_page = '50';
+		  $rows_per_page = $rows_per_page ;
 		}
 	}
 	
@@ -321,28 +340,30 @@ jQuery( "#close-settings-panel" ).panel( "close" );
 // first/prev pagination hyperlinks
 if ($pageno == 1) {
 } else {
-   echo " <a href='admin.php?page=pps-settings-page&pageno=1&from=".$setfromdate."&to=".$settodate."'>First</a> ";
+   echo "<a href='admin.php?page=pps-settings-page&pageno=1&from=".$setfromdate."&to=".$settodate."'>First</a>";
    $prevpage = $pageno-1;
-   echo "<a href='admin.php?page=pps-settings-page&pageno=".$prevpage."&from=".$setfromdate."&to=".$settodate."'>Previous</a>";
+   echo "<a href='admin.php?page=pps-settings-page&pageno=".$prevpage."&from=".$setfromdate."&to=".$settodate."'>Previous</a>&nbsp;&nbsp;";
 }
 
 // Display current page or pages
-echo " ( Page $pageno of $lastpage ) ";
+echo "Page $pageno of $lastpage";
 
 // next/last pagination hyperlinks
 if ($pageno == $lastpage) {
 } else {
    $nextpage = $pageno+1;
-   echo " <a href='admin.php?page=pps-settings-page&pageno=".$nextpage."&from=".$setfromdate."&to=".$settodate."'>Next</a> ";
-   echo " <a href='admin.php?page=pps-settings-page&pageno=".$lastpage."&from=".$setfromdate."&to=".$settodate."'>Last</a> ";
+   echo "&nbsp;&nbsp;<a href='admin.php?page=pps-settings-page&pageno=".$nextpage."&from=".$setfromdate."&to=".$settodate."'>Next</a>";
+   echo "<a href='admin.php?page=pps-settings-page&pageno=".$lastpage."&from=".$setfromdate."&to=".$settodate."'>Last</a>";
 }
 ?>
       </div>
       <div class="clear"></div>
     </div>
     <!--/sr_split_plugin_wrap--> 
-    
-    <a class="glogo-logo" href="http://guardianlv.com/" target="_blank"></a> <a class="pps-settings-admin-slick-logo" href="http://www.slickremix.com" target="_blank"></a> </div>
+<?php $customPageName =  get_option('my_option_name55');
+  		if ($customPageName == ' ' || $customPageName == '') { ?> 
+    		<a class="pps-settings-admin-slick-logo" href="http://www.slickremix.com" target="_blank"></a>
+<?php }?> </div>
   <?php include('includes/panel.php'); ?>
 </div>
 <!--/page-->

@@ -3,12 +3,12 @@
 Plugin Name: Post Profit Stats
 Plugin URI: http://slickremix.com/
 Description: Do you pay authors for page views? Let our plugin calculate the amount per post view and give you totals by date.
-Version: 1.0.2
+Version: 1.0.3
 Author: SlickRemix
 Author URI: http://slickremix.com/
 Requires at least: wordpress 3.4.0
-Tested up to: wordpress 3.6.1
-Stable tag: 1.0.2
+Tested up to: wordpress 3.8
+Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -30,6 +30,25 @@ include( 'admin/pps-single-author.php' );
 
 // Include core files and classes
 include( 'includes/pps-functions.php' );
+
+// Include Leave feedback, Get support and Plugin info links to plugin activation and update page.
+add_filter("plugin_row_meta", "pps_add_leave_feedback_link", 10, 2);
+
+	function pps_add_leave_feedback_link( $links, $file ) {
+		if ( $file === plugin_basename( __FILE__ ) ) {
+			$links['feedback'] = '<a href="http://wordpress.org/support/view/plugin-reviews/post-profit-stats" target="_blank">' . __( 'Leave feedback', 'gd_quicksetup' ) . '</a>';
+			$links['support']  = '<a href="http://www.slickremix.com/support-forum/wordpress-plugins-group3/post-profit-stats-forum11/" target="_blank">' . __( 'Get support', 'gd_quicksetup' ) . '</a>';
+			$links['plugininfo']  = '<a href="plugin-install.php?tab=plugin-information&plugin=post-profit-stats&section=changelog&TB_iframe=true&width=640&height=423" class="thickbox">' . __( 'Plugin info', 'gd_quicksetup' ) . '</a>';
+		}
+		return $links;
+	}
+// Include our own Settings link to plugin activation and update page.
+add_filter("plugin_action_links_".plugin_basename(__FILE__), "pps_plugin_actions", 10, 4);
+
+	function pps_plugin_actions( $actions, $plugin_file, $plugin_data, $context ) {
+		array_unshift($actions, "<a href=\"".menu_page_url('pps-settings-page', false)."\">".__("Settings")."</a>");
+		return $actions;
+}
 
 /**
  * Returns current plugin version. SRL added
@@ -77,7 +96,7 @@ register_activation_hook(__FILE__,'slick_post_profit_stats_db_install');
 function my_slick_pps_script_enqueuer() {
    // nothing in this script yet, just prepped for future use.	
    wp_register_script( "my_ppsChecker_script", WP_PLUGIN_URL.'/post-profit-stats/admin/js/my_ppsChecker_script.js', array('jquery') );
-   wp_localize_script( 'my_ppsChecker_script', 'myPPSAjax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' )));        
+   wp_localize_script( 'my_ppsChecker_script', 'myPPSAjax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' )));         
 
    wp_enqueue_script( 'jquery' );
    wp_enqueue_script( 'my_ppsChecker_script' );
@@ -88,9 +107,6 @@ add_action( 'init', 'my_slick_pps_script_enqueuer' );
 function add_js_to_wp_footer(){ 
 if(is_single())
 	{
-
-
-
 ?>
 
 <?php include_once( ABSPATH . 'wp-admin/includes/plugin.php' ); ?>

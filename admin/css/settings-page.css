@@ -1,17 +1,11 @@
 .sr-header.ui-header {
-	margin: 0 20px 0 0px;
-	padding: 15px 0 0 15px;
-	-webkit-border-bottom-right-radius: 4px;
-	-webkit-border-bottom-left-radius: 4px;
-	-moz-border-radius-bottomright: 4px;
-	-moz-border-radius-bottomleft: 4px;
-	border-bottom-right-radius: 4px;
-	border-bottom-left-radius: 4px;
-	border: 1px solid rgb(219, 219, 219) !important;
+	margin: 0;
+	padding: 15px 0 0 0px;
 	overflow: visible;
 	min-width: 505px;
 	position: relative;
-	background: rgb(236, 236, 236) !important;
+	background: none !important;
+	border:none;
 }
 .ui-btn-right {
 	position: relative !important;
@@ -31,7 +25,7 @@
 	background: #eee;
 }
 .ui-panel-inner .ui-body-c {
-	border: 1px solid rgb(211, 211, 211);
+	border: 1px solid rgb(184, 184, 184);
 }
 .margin-plus {
 	margin-bottom: 25px;
@@ -149,12 +143,9 @@ h4 small {
 	padding: 4px;
 	line-height: 1;
 	border: 1px solid #DDD;
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	border-radius: 4px;
-	-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
-	-moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
-	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
+	-webkit-border-radius: 1px;
+	-moz-border-radius: 1px;
+	border-radius: 1px;
 }
 .ui-panel-inner {
 	padding: 15px 20px 0 5px !important;
@@ -163,12 +154,12 @@ h4 small {
 	min-height: 1.5em;
 	text-align: left;
 	float: left;
-	font-size: 22px;
+	font-size: 23px;
 	display: block;
 	margin: 5px 0 0 0 !important;
-	padding: 0 0 0 48px;
+	padding: 0 0 0 49px;
 	background: url(../images/pps-icon-settings-header.png) 0px 3px no-repeat;
-	background-size: 38px 25px;
+	background-size: 41px 26px;
 	text-overflow: ellipsis;
 	overflow: hidden;
 	white-space: nowrap;
@@ -215,7 +206,7 @@ h4 small {
 }
 .sr_split_plugin_wrap h2 {
 	padding: 5px 0 2px 0;
-	text-shadow: 1px 1px 2px rgb(187, 187, 187);
+	text-shadow: 1px 1px 2px rgb(228, 228, 228);
 }
 .sr_split_plugin_wrap .span3:hover {
 	background-color: #F5F5F5;
@@ -249,7 +240,8 @@ h4 small {
 	padding-bottom: 12px;
 	margin: 25px 20px 0 0;
 	padding: 5px 15px 12px 14px;
-	min-width: 495px;
+	/* min-width: 495px; */
+	background:#FFF;
 }
 .sr_split_plugin_wrap h2 a {
      color:#333 !important;
@@ -385,19 +377,16 @@ h1.yearly-total {
 	text-decoration: none;
 }
 .ui-content, .ui-page {
-	background: #FFF !important;
+	background: none !important;
 }
 .sr-content {
 	padding: 0px !important;
 } 
 .ui-body-c, .ui-overlay-c {
+	background: #F1F1F1 !important;
+}
+.ui-body-c input, .ui-overlay-c input {
 	background: #fff !important;
-	background-image: -webkit-gradient(linear, left top, left bottom, from( #fff ), to( #FFF)) !important;
-	background-image: -webkit-linear-gradient( #fff, #FFF ) !important;
-	background-image: -moz-linear-gradient( #fff, #FFF ) !important;
-	background-image: -ms-linear-gradient( #fff, #FFF) !important;
-	background-image: -o-linear-gradient( #fff, #FFF ) !important;
-	background-image: linear-gradient( #fff, #FFF ) !important;
 }
 .ui-bar-a {
 	border: 0px solid #333;
@@ -426,19 +415,19 @@ label.ui-input-text {
 }
 .slickpps-start-date-input-wrap {
 	float:left !important; 
-	width:155px !important; 
+	width:175px !important; 
 	clear:none !important;
 }
 .slickpps-end-date-input-wrap {
 	float:left !important; 
-	width:150px !important; 
+	width:170px !important; 
 	clear:none !important;	
 }
 .slickpps-submit-date-search-input-wrap {
 	float:left; 
 	width:75px; 
 	clear:none;	
-	margin-top:17px;
+	margin-top:21px;
 }
 .slickpps-pps-user-id-date-input-wrap {
 	float:left !important; 
@@ -452,7 +441,9 @@ input#pps_user_id {
      border: 1px solid #A8A8A8;
      border-radius:0;     
 }
-
+.slickpps-pps-user-id-date-input-wrap label, .slickpps-start-date-input-wrap label, .slickpps-end-date-input-wrap label {
+	padding-left:2px !important;
+}
 .slick-click-on-username-note {
      padding-top:5px; 
      color: rgb(85, 85, 85);
@@ -464,45 +455,33 @@ input#pps_user_id {
 	background:url(../images/footer-logo.png) center no-repeat;
 	width: 124px;
 	height: 20px;
-	padding: 8px 12px;
+	padding: 7px 12px;
 	display: block;
 	float:right;
-	margin-right:9px;
+	margin-right:3px;
 	-webkit-border-radius: 3px;
 	border-radius: 3px;
 	-webkit-transition: all 0.25s linear;
 	-moz-transition: all 0.25s linear;
 	transition: all 0.25s linear;
 }
-.pps-settings-admin-slick-logo:hover, .glogo-logo:hover {
+.pps-settings-admin-slick-logo:hover {
 	opacity:.7;
-}
-.glogo-logo {
-	background:url(../images/gaurdian-express-logo.png) center no-repeat;
-	width: 216px;
-	height: 24px;
-	padding: 8px 0px;
-	display: block;
-	float:left;
-	-webkit-border-radius: 3px;
-	border-radius: 3px;
-	-webkit-transition: all 0.25s linear;
-	-moz-transition: all 0.25s linear;
-	transition: all 0.25s linear;
 }
 .slick-pagination-wrap {
      padding:12px 0 5px 0;
-     float:right;   
+     float:right;
+	 color:#777;
 }
 .slick-pagination-wrap a {
      text-decoration:none;
-     padding:2px 5px;
+     padding:4px 6px;
+	 margin-left:1px;
      text-shadow:none;
      font-weight:normal !important;
      letter-spacing:1px;
      color:#FFF !important;
-     background:#999;
-     border-radius:15px;
+     background:#999; 
      font-size:11px;  
      -webkit-transition: all 0.30s ease-in-out !important;
 	-moz-transition: all 0.30s ease-in-out !important;
@@ -512,4 +491,53 @@ input#pps_user_id {
 .slick-pagination-wrap a:hover {
      opacity:.6;  
      color:#FFF !important;
+}
+.ui-panel-display-reveal {
+-webkit-box-shadow: inset 0px 0 0px rgba(0,0,0,.15) !important;
+-moz-box-shadow: inset 0px 0 0px rgba(0,0,0,.15) !important;
+box-shadow: inset 0px 0 0px rgba(0,0,0,.15) !important;
+}
+.ui-shadow {
+-moz-box-shadow: 0 0px 0px rgba(0,0,0,.2) !important;
+-webkit-box-shadow: 0 0px 0px rgba(0,0,0,.2) !important;
+box-shadow: 0 0px 0px rgba(0,0,0,.2) !important;
+}
+.ui-input-search .ui-input-clear, .ui-input-text .ui-input-clear {
+right: -3px !important;
+margin-top: -12px !important;
+}
+.ui-corner-all {
+-moz-border-radius: 0px !important;
+-webkit-border-radius: 0px !important;
+border-radius: 0px !important;
+}
+.ui-shadow-inset {
+-moz-box-shadow: inset 0 0px 0px rgba(0,0,0,.2) !important;
+-webkit-box-shadow: inset 0 0px 0px rgba(0,0,0,.2) !important;
+box-shadow: inset 0 0px 0px rgba(0,0,0,.2) !important;
+}
+.ui-popup-screen.in {
+opacity: 0 !important;
+filter: Alpha(Opacity=0) !important;
+}
+#text-10, #text-11 {
+	padding:5px 0;
+	margin:5px 0
+}
+#popupDialog .ui-body-c {
+	background:#FFF !important;
+}
+#wpbody-content {
+padding-bottom: 45px !important;
+}
+@media screen and (max-width: 782px) {
+textarea, input {
+font-size: 14px !important;
+}
+}
+.date-pick, .pps_user_id {
+	height:32px;
+	border:1px solid #ddd !important;
+	outline:none !important;
+	padding:4px 5px !important;
 }

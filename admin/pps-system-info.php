@@ -1,11 +1,42 @@
 <?php function pps_system_info_page(){ ?>
-<div class="fts-help-admin-wrap"> <a class="buy-extensions-btn" href="http://www.slickremix.com/shop/" target="_blank">Get Extensions Here!</a>
+<div class="pps-help-admin-wrap"> <a class="buy-extensions-btn" href="http://www.slickremix.com/product-category/wordpress-plugins/" target="_blank">Get Extensions Here!</a>
   <h2>Help & System Info </h2>
-  <div class="fts-admin-help-wrap">
-    <div class="use-of-plugin">Can't figure out how to do something and need help? Use our <a href="http://www.slickremix.com/support-forum/" target="_blank">Support Forum</a> and someone will respond to your request asap. Usually we will respond the same day, the latest the following day. You may also find some of the existing posts to be helpfull too, so take a look around first. If you do submit a question please <a href="#" class="fts-debug-report">generate a report</a> and copy the info, ask your question in our <a href="http://www.slickremix.com/support-forum/" target="_blank">Support Forum</a> then paste the info you just copied. That will help speed things along for sure. </div>
-    <h3>Plugin &amp; System Info</h3>
-    <p>Please <a href="#" class="fts-debug-report">click here to generate a report</a> You will need to  paste this information along with your question in our <a href="http://www.slickremix.com/support-forum/" target="_blank">Support Forum</a>. Ask your question then paste the copied text below it. </p>
-    <textarea id="fts-debug-report" readonly="readonly"></textarea>
+  <div class="pps-admin-help-wrap">
+  
+  <h3>Restart Tour</h3>
+    <div class="use-of-plugin"> 
+   		<ol>
+   			<li><a href="#" id="retake-tour"><strong>Post Profit Stats Tour</strong></a>  </li>
+		  <?php if(is_plugin_active('post-profit-stats-pro/post-profit-stats-pro.php')) {
+					require_once ABSPATH . '/wp-content/plugins/post-profit-stats-pro/includes/settings-page-retour.php';
+				}; ?>
+       </ol>
+    </div>
+    <script type="text/javascript">
+     jQuery('#retake-tour').click(function () {
+                    //  alert('something');
+                        jQuery.ajax({
+                            type: 'POST',
+                            url: myPPSAjax.ajaxurl,
+                            //function/addaction call from functions in plugin
+                            data: {action: "pps_wp_pointers_remove" },
+                            success: function(data){
+                              // alert(data);
+                                 console.log('ReTour Worked');
+                                 window.location.href = 'plugins.php'; 
+                                 return data; 
+                                } 
+                        });
+                    	return false;
+       });
+    </script>
+ <h3>Help</h3>
+  
+    <div class="use-of-plugin">Are you having trouble and need help? Use our <a href="http://www.slickremix.com/support-forum/" target="_blank">Support Forum</a> and someone will respond to your request asap. Usually we will respond the same day, the latest the following day. You may also find some of the existing posts to be helpfull too, so take a look around first.<br/><br/>If you do submit a question please <a href="#" class="pps-debug-report">generate a report</a> and copy the info, ask your question in our <a href="http://www.slickremix.com/support-forum/" target="_blank">Support Forum</a> then paste the info you just copied. That will help speed things along for sure.<br/><br/>
+    If you like our plugin please drop us a <a href='http://wordpress.org/support/view/plugin-reviews/post-profit-stats' target='_blank'>Review</a> on Wordpress. You can also Like Us on <a href='https://www.facebook.com/SlickRemix' target='_blank'>Facebook</a>.</div>
+    <h3>System Info</h3>
+    <p>Please <a href="#" class="pps-debug-report">click here to generate a report</a> You will need to  paste this information along with your question in our <a href="http://www.slickremix.com/support-forum/" target="_blank">Support Forum</a>. Ask your question then paste the copied text below it. </p>
+    <textarea id="pps-debug-report" readonly="readonly"></textarea>
     <table class="wc_status_table widefat" cellspacing="0">
       <thead>
         <tr>
@@ -65,32 +96,46 @@
                     ?></td>
         </tr>
         <tr>
-          <td><?php _e('Server Softsware','ppssystem')?></td>
+          <td><?php _e('Server Software','ppssystem')?></td>
           <td><?php
                     	echo $_SERVER['SERVER_SOFTWARE'];
                     ?></td>
         </tr>
         <tr>
           <td><?php _e('WP Max Upload Size','ppssystem'); ?></td>
-          <td><?php
-                    	echo wp_convert_bytes_to_hr( wp_max_upload_size() );
+          <td><?php		
+                    	echo size_format(wp_max_upload_size() );
                     ?></td>
         </tr>
         <tr>
           <td><?php _e('WP Debug Mode','ppssystem')?></td>
           <td><?php if ( defined('WP_DEBUG') && WP_DEBUG ) echo '<mark class="yes">' . __('Yes', 'ppssystem') . '</mark>'; else echo '<mark class="no">' . __('No', 'ppssystem') . '</mark>'; ?></td>
         </tr>
+         <tr>
+          <td><?php _e('fsockopen','ftsystem')?></td>
+          <td><?php
+ if(function_exists('fsockopen')) {
+      echo "fsockopen is ON";
+ }
+ else {
+      echo "fsockopen is not enabled and must be set to ON for our plugin to work properly with all feeds.";
+ }
+ ?></td>
+        </tr>
       </tbody>
     </table>
   </div>
-  <!--/fts-admin-help-faqs-wrap--> 
-  
-  <a class="glogo-logo" href="http://guardianlv.com/" target="_blank"></a> <a class="pps-settings-admin-slick-logo" href="http://www.slickremix.com" target="_blank"></a> </div>
-<!--/fts-help-admin-wrap--> 
+  <!--/pps-admin-help-faqs-wrap-->  
+<?php $customPageName =  get_option('my_option_name55');
+  		if ($customPageName == ' ' || $customPageName == '') { ?> 
+    		<a class="pps-settings-admin-slick-logo" href="http://www.slickremix.com" target="_blank"></a>
+<?php }?>
+   </div>
+<!--/pps-help-admin-wrap--> 
 <script type="text/javascript">
-		jQuery('a.fts-debug-report').click(function(){
+		jQuery('a.pps-debug-report').click(function(){
 
-			if ( ! jQuery('#fts-debug-report').val() ) {
+			if ( ! jQuery('#pps-debug-report').val() ) {
 
 				// Generate report - user can paste into forum
 				var report = '`';
@@ -118,9 +163,9 @@
 					}
 				});
 				report = report + '`';
-				jQuery('#fts-debug-report').val( report );
+				jQuery('#pps-debug-report').val( report );
 			}
-			jQuery('#fts-debug-report').slideToggle('500', function() {
+			jQuery('#pps-debug-report').slideToggle('500', function() {
 				jQuery(this).select();
 			});
       		return false;
