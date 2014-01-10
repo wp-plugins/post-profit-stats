@@ -25,18 +25,13 @@ Setting this up could not be easier. Simply add the amount per view you are payi
 = The Pro Extension =
   1. Track UNLIMTED Authors.
   2. Allows you to set an amount of money paid to EACH individual Author per view.
-  3. If you are logged in and viewing your posts they will not be counted. Only if you are logged out.
-  4. Change the Sales Figures & Total Sales colors.
-  5. Author's can login to view their details stats!
-  6. Views get counted even with caching plugins. That’s right it will work!
-  7. The information is recorded to your database.
-  8. When you purchase the [PRO Extension](http://www.slickremix.com/product/post-profit-stats-pro-extension/) it will become available for download on your "My Account" Page.
-  9. You can change the name ‘Post Profit Stats’ in the menu and main page header to your company name.
-  10. You can remove the slickremix logo in the footer of our plugin pages 
+  3. You can change the name ‘Post Profit Stats’ in the menu and main page header to your company name.
+  4. You can remove the slickremix logo in the footer of our plugin pages 
+  5. When you purchase the [PRO Extension](http://www.slickremix.com/product/post-profit-stats-pro-extension/) it will become available for download on your "My Account" Page.
 
 = The Enterprise Extension (Includes ALL the Pro features plus more) =
-  1. Track unlimited users. 
-  2. Track all Post Views in a separate database from your WordPress install. The advantage of a separate database is that you do not take up a lot of space in the database counting views and slowing down your website. We have made it so easy that all you have to do is add a database to your server and fill in the connection info in the settings panel of the setting page! The extension does the rest of the leg work. Yup, It’s that easy! This extension also lets you set a different payment amount per post view to each individual author on the user profile page.
+  1. The Enterpise version includes all the PRO features.
+  2. Track all Post Views in a SEPERATE DATABASE from your WordPress install. The advantage of a separate database is that you do not take up a lot of space in the database counting views and slowing down your website. We have made it so easy that all you have to do is add a database to your server and fill in the connection info in the settings panel of the setting page! The extension does the rest of the leg work. Yup, It’s that easy! This extension also lets you set a different payment amount per post view to each individual author on the user profile page.
   3. Take a look here for [Enterprise Extension](http://www.slickremix.com/product/post-profit-stats-enterprise-extension/). 
 
 = Tests =
