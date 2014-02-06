@@ -61,7 +61,10 @@ else {  $customPageName = 'Post Profit Stats'; }
 
  add_menu_page($customPageName, $customPageName, 'manage_options', 'pps-settings-page', 'pps_settings_page', 'div', 98);
  add_submenu_page( 'pps-settings-page', 'Authors Total Stats' , 'Authors Total Stats', 'manage_options', 'pps-settings-page', 'pps_settings_page');
- add_submenu_page( 'pps-settings-page', 'Author Detail Stats' , 'Author Detail Stats', 'read', 'pps-single-author', 'pps_single_author');
+ // only show the menu option if the user is an author
+ if(is_user_logged_in() && current_user_can( 'author' ) || is_user_logged_in() && current_user_can( 'administrator' ))  {    
+     add_submenu_page( 'pps-settings-page', 'Author Detail Stats' , 'Author Detail Stats', 'read', 'pps-single-author', 'pps_single_author');
+	  }  
  add_submenu_page( 'pps-settings-page', 'System Info' , 'Help / System Info', 'manage_options', 'pps-system-info-submenu-page', 'pps_system_info_page');
  add_submenu_page( 'pps-settings-page', '', 'Restart Tour', 'manage_options', 'pps-system-info-submenu-page', 'pps_system_info_page');
   

@@ -2,8 +2,8 @@
 Contributors: slickremix
 Tags:  Posts, Profit, Sales, Post Count, Stats, Statistics, WordPress Stats, Views, plugin, pages, posts, page, user, authors, author, wp stats, page views, track, tracking, jetpack, jetpack stats, profit, news
 Requires at least: 3.5.0
-Tested up to: 3.8
-Stable tag: 1.0.3
+Tested up to: 3.8.1
+Stable tag: 1.0.4
 License: GPLv2 or later
 
 Do you pay authors for page views? Let our plugin calculate the amount per post view and give you totals by date.
@@ -26,13 +26,11 @@ Setting this up could not be easier. Simply add the amount per view you are payi
   1. Track UNLIMTED Authors.
   2. Allows you to set an amount of money paid to EACH individual Author per view.
   3. You can change the name ‘Post Profit Stats’ in the menu and main page header to your company name.
-  4. You can remove the slickremix logo in the footer of our plugin pages 
-  5. When you purchase the [PRO Extension](http://www.slickremix.com/product/post-profit-stats-pro-extension/) it will become available for download on your "My Account" Page.
+  4. The slickremix logo can be removed from the footer of our plugin pages.
 
-= The Enterprise Extension (Includes ALL the Pro features plus more) =
-  1. The Enterpise version includes all the PRO features.
-  2. Track all Post Views in a SEPERATE DATABASE from your WordPress install. The advantage of a separate database is that you do not take up a lot of space in the database counting views and slowing down your website. We have made it so easy that all you have to do is add a database to your server and fill in the connection info in the settings panel of the setting page! The extension does the rest of the leg work. Yup, It’s that easy! This extension also lets you set a different payment amount per post view to each individual author on the user profile page.
-  3. Take a look here for [Enterprise Extension](http://www.slickremix.com/product/post-profit-stats-enterprise-extension/). 
+= The Enterprise Extension =
+  1. Track all Post Views in a SEPERATE DATABASE from your WordPress install. The advantage of a separate database is that you do not take up a lot of space in the database counting views and slowing down your website. We have made it so easy that all you have to do is add a database to your server and fill in the connection info in the settings panel of the setting page! The extension does the rest of the leg work. Yup, It’s that easy! This extension also lets you set a different payment amount per post view to each individual author on the user profile page.
+  2. Take a look here for [Enterprise Extension](http://www.slickremix.com/product/post-profit-stats-enterprise-extension/). 
 
 = Tests =
 We've also done the following tests to make sure the view counts are as accurate as possible. Here are a few. Again even if you have a caching plugin installed this plugin will still track views, similar to google.
@@ -61,6 +59,13 @@ Technical Note: This plugin has been tested and works with bbpress.
   * Extract the zip file and just drop the contents in the wp-content/plugins/ directory of your WordPress installation and then activate the Plugin from Plugins page. 
 
 == Changelog ==
+= Version 1.0.4 February 6th, 2014 =
+ * FIXED: Totals now reflect proper if users are changed on a post.
+ * FIXED: Subscribers and other users besides the admin, and author will not see the menu in the admin area.
+ * FIXED: Authors cannot edit settings or view other authors stats.
+ * PRO Verion Note: Site Licenses are now required for the 1.0.3 update.
+ * ENTERPRISE Verion Note: Site Licenses are now required for the 1.0.2 update.
+ 
 = Version 1.0.3 January 9th, 2013 =
  * CHANGED: New UI for Wordpress 3.8 update
  * ADDED: Plugin activation page now has settings link, support forum link, review link and more.

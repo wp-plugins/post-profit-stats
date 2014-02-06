@@ -23,7 +23,8 @@ if(is_plugin_active('post-profit-stats-ent/post-profit-stats-ent.php')) {
 	  SELECT *,count(*) as countslick
 	  FROM $slickpps_ent_table_name
 	  WHERE create_date >='".$fromdate."' 
-	  AND create_date<='".$todate."' 
+	  AND create_date<='".$todate."'
+	  AND post_author ='".$_POST['pps_user_id']."'  
 	  GROUP BY post_id desc
 	  ";
 	
@@ -36,7 +37,8 @@ if(is_plugin_active('post-profit-stats-ent/post-profit-stats-ent.php')) {
 		SELECT *,count(*) as countslick
 		FROM $slickpps_ent_table_name
 		WHERE create_date >='".$_POST['from']."' 
-		AND create_date<='".$_POST['to']."' 
+		AND create_date<='".$_POST['to']."'
+		AND post_author ='".$_POST['pps_user_id']."'  
 		GROUP BY post_id desc
 		";
 	}
@@ -46,7 +48,8 @@ if(is_plugin_active('post-profit-stats-ent/post-profit-stats-ent.php')) {
 		SELECT *,count(*) as countslick
 		FROM $slickpps_ent_table_name
 		WHERE create_date >='".$_POST['from']."' 
-		AND create_date<='".$_POST['to']."' 
+		AND create_date<='".$_POST['to']."'
+		AND post_author ='".$_POST['pps_user_id']."'  
 		GROUP BY post_id desc
 		";
 	} 
@@ -64,7 +67,8 @@ else {
 		SELECT *,count(*) as countslick
 		FROM $table_name
 		WHERE create_date >='".$fromdate."' 
-		AND create_date<='".$todate."' 
+		AND create_date<='".$todate."'
+		AND post_author ='".$_POST['pps_user_id']."'  
 		GROUP BY post_id desc
 	    ";
 	
@@ -77,7 +81,8 @@ else {
 		SELECT *,count(*) as countslick
 		FROM $table_name
 		WHERE create_date >='".$_POST['from']."' 
-		AND create_date<='".$_POST['to']."' 
+		AND create_date<='".$_POST['to']."'
+		AND post_author ='".$_POST['pps_user_id']."'  
 		GROUP BY post_id desc
 		";
 	}
@@ -88,6 +93,7 @@ else {
 		FROM $table_name
 		WHERE create_date >='".$_POST['from']."' 
 		AND create_date<='".$_POST['to']."' 
+		AND post_author ='".$_POST['pps_user_id']."'  
 		GROUP BY post_id desc
 		";
 	} 
@@ -113,15 +119,15 @@ jQuery( "#close-settings-panel" ).panel( "close" );
 </script>
 <div data-role="page" id="page" style="position:relative;">
   <div data-role="header" data-theme="c" class="sr-header">
-    <?php if ( is_user_logged_in() && current_user_can( 'author' ) ) { 
-   // we do not want to show the setting options for the author 
-       }
-else { ?>
-    <a href="#mypanel" class="ui-btn-right header-settings-btn" style="margin-right: 35px; margin-top: 15px;" data-role="button" data-theme="b" data-icon="bars" data-display="overlay">Settings & Info</a>
-    <?php } ?>
-    <h2><?php	if(is_plugin_active('post-profit-stats-pro/post-profit-stats-pro.php')) {
-     
-    $customPageName =  get_option('my_option_name55');
+    <?php if ( is_user_logged_in() && current_user_can( 'manage_options' ) ) {  ?>
+ <a href="#mypanel" class="ui-btn-right header-settings-btn" style="margin-right: 35px; margin-top: 15px;" data-role="button" data-theme="b" data-icon="bars" data-display="overlay">Settings & Info</a>
+      <?php   }
+else { 
+	 // we do not want to show the setting options for the author   
+} ?>
+    <h2><?php if(is_plugin_active('post-profit-stats-pro/post-profit-stats-pro.php')) {
+   
+    $customPageName = get_option('my_option_name55');
     if ($customPageName == ' ' || $customPageName == '') { ?> 
     Post Profit Stats
 <?php } 
@@ -134,27 +140,29 @@ else { ?>
         }
 ?></h2>
     <div class="clear"></div>
-    <?php if ( is_user_logged_in() && current_user_can( 'author' ) ) { 
+    <?php if ( is_user_logged_in() && current_user_can( 'manage_options' ) ) { 
 		?>
-    <div class="slick-click-on-username-note-detail-page">Click submit to view your totals for today or change dates to view different totals.</div>
+   <div class="slick-click-on-username-note-detail-page">To search a specific user please enter their ID number.</div>
     <?php
        }
 else { ?>
-    <div class="slick-click-on-username-note-detail-page">To search a specific user please enter their ID number.</div>
+     <div class="slick-click-on-username-note-detail-page">Click submit to view your totals for today or change dates to view different totals.</div>
     <?php } ?>
     <form method="post" data-theme="c" action="admin.php?page=pps-single-author" id="slick-date-selector">
-      <?php if ( is_user_logged_in() && current_user_can( 'author' ) ) {
-    global $current_user;
-      get_currentuserinfo(); ?>
-      <input type="hidden" data-role="none" class="pps_user_id" data-theme="c" name="pps_user_id"  id="pps_user_id" value="<?php echo $current_user->ID; ?>" />
-      <?php }
-else {
-	?>
+      <?php if ( is_user_logged_in() && current_user_can( 'manage_options' ) ) {
+      ?>
       <div data-role="fieldcontain" class="slickpps-pps-user-id-date-input-wrap">
         <label for="start_date" >User ID: </label>
         <input type="text" data-role="none" class="pps_user_id" data-theme="c" name="pps_user_id"  id="pps_user_id" value="<?php
     if (isset($_POST['pps_user_id'])){echo $_POST["pps_user_id"];}?>" />
       </div>
+      
+      <?php }
+	  
+else {
+	global $current_user;
+      get_currentuserinfo(); ?>
+      <input type="hidden" data-role="none" class="pps_user_id" data-theme="c" name="pps_user_id"  id="pps_user_id" value="<?php echo $current_user->ID; ?>" />
       <?php } ?>
       <div data-role="fieldcontain" class="slickpps-start-date-input-wrap">
         <label for="start_date" >From: </label>
@@ -209,7 +217,7 @@ else {
 			$amount_per_view  = get_option('my_option_name1');
 	   }
 		  
-	  if($post_id == $data_id && $post_author == $data_author){
+	 
 	  
 	  if (!empty($user_profile_field) && $user_profile_field !== ' '){
 	  	$slickremixCountX = $views_count * $user_profile_field;
@@ -224,12 +232,12 @@ else {
 	  //Count up Profit and round it to the nearest Decimal.
 	  $profits_count = round($slickremixCountX, 4);
   		 
-		 $slickpostauthor[$posts->post_author]['post_count'] += $post_counter  ;
-		 $slickpostauthor[$posts->post_author]['view_count'] += $views_count;
-		 $slickpostauthor[$posts->post_author]['comments_count'] += $comments_counts;
-		 $slickpostauthor[$posts->post_author]['profits_count'] += $profits_count;	
+		 $slickpostauthor[$data->post_author]['post_count'] += $post_counter;
+		 $slickpostauthor[$data->post_author]['view_count'] += $views_count;
+		 $slickpostauthor[$data->post_author]['comments_count'] += $comments_counts;
+		 $slickpostauthor[$data->post_author]['profits_count'] += $profits_count;	
 	  }
-	}
+	
 
 //echo "<pre>";
 //print_r($slickpostauthor);
@@ -260,7 +268,7 @@ else {
 			  $user_profile_field= esc_attr( get_user_meta( $data_author, 'pps_percentage',true));
 			  
 			  
-			  if($key == $this_post_author) {
+			  if($key == $data_author) {
 				  $views_count = $data->countslick;
         ?>
         <div class='trans-colum'>

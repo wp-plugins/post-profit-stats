@@ -12,11 +12,12 @@ if(isset($_GET['to']) and isset($_GET['from'])) {
 	
 	$_POST['from'] = $fromdate;
 	$_POST['to'] = $todate ;
+	$notset = false;
 }
-
 if(!isset($_POST['to']) and !isset($_POST['from'])) {
   $_POST['from'] = date_i18n('Y-m-d');
   $_POST['to'] = date_i18n('Y-m-d');
+  $notset = true;
 }
 
 $setfromdate = $_POST['from'];
@@ -27,21 +28,22 @@ if(is_plugin_active('post-profit-stats-ent/post-profit-stats-ent.php')) {
 	global $slickpps_ent_table_name;
 	global $slickpps_db;
 	
-	if(isset($_POST['to']) and isset($_POST['from'])) {
+	if($notset = false) {
 	
 		$select = "
 		SELECT *,count(*) as countslick
 		FROM $slickpps_ent_table_name
 		WHERE create_date >='".$_POST['from']."' 
 		AND create_date<='".$_POST['to']."' 
-		GROUP BY post_id desc
+		GROUP BY post_id desc, post_author
 		";
 	} else {
 		$select = "
 		SELECT *,count(*) as countslick
-		FROM $slickpps_ent_table_name
-		WHERE 1=1
-		GROUP BY post_id desc
+		FROM $table_name 
+		WHERE create_date >='".$_POST['from']."' 
+		AND create_date<='".$_POST['to']."'
+		GROUP BY post_id desc, post_author 
 		";
 	}
 	
@@ -50,21 +52,22 @@ if(is_plugin_active('post-profit-stats-ent/post-profit-stats-ent.php')) {
 else	{
 	$table_name = $wpdb->prefix . "slick_post_profit_stats";
 	
-	if(isset($_POST['to']) and isset($_POST['from'])) {
+	if( $notset == false) {
 	
 		$select = "
 		SELECT *,count(*) as countslick
 		FROM $table_name
 		WHERE create_date >='".$_POST['from']."' 
 		AND create_date<='".$_POST['to']."' 
-		GROUP BY post_id desc
+		GROUP BY post_id desc, post_author
 		";
 	} else {
 		$select = "
 		SELECT *,count(*) as countslick
-		FROM $table_name
-		WHERE 1=1
-		GROUP BY post_id desc
+		FROM $table_name 
+		WHERE create_date >='".$_POST['from']."' 
+		AND create_date<='".$_POST['to']."'
+		GROUP BY post_id desc, post_author 
 		";
 	}
 	
@@ -156,8 +159,6 @@ if ($tabledata)	{
 	  $user_profile_field= esc_attr( get_user_meta( $data_author, 'pps_percentage',true));
 	  $comments_counts = $posts->comment_count;
 	  $views_count = $data->countslick;
-	   
-	  if($post_id == $data_id && $post_author == $data_author){
 	  
 		  $amount_per_view = get_option('my_option_name1');
 		  
@@ -168,9 +169,10 @@ if ($tabledata)	{
 			$rows_per_page = get_option('my_option_name1');
 		  }
 		
-		  if (!empty($user_profile_field) && $user_profile_field !== ' '){
-			$slickremixCountX = $views_count * $user_profile_field;
-		  }
+	  
+	  if (!empty($user_profile_field) && $user_profile_field !== ' '){
+	  	$slickremixCountX = $views_count * $user_profile_field;
+	  }
 		  else	{
 			  $slickremixCountX = $views_count * $amount_per_view;
 		  }
@@ -180,12 +182,13 @@ if ($tabledata)	{
 	  //Count up Profit and round it to the nearest Decimal.
 	  $profits_count = round($slickremixCountX, 4);
   		 
-		 $slickpostauthor[$posts->post_author]['post_count'] += $post_counter;
-		 $slickpostauthor[$posts->post_author]['view_count'] += $views_count;
-		 $slickpostauthor[$posts->post_author]['comments_count'] += $comments_counts;
-		 $slickpostauthor[$posts->post_author]['profits_count'] += $profits_count;	
+		 $slickpostauthor[$data->post_author]['post_count'] += $post_counter;
+		 $slickpostauthor[$data->post_author]['view_count'] += $views_count;
+		 $slickpostauthor[$data->post_author]['comments_count'] += $comments_counts;
+		 $slickpostauthor[$data->post_author]['profits_count'] += $profits_count;	
 	  }
-	}
+
+	
 }// End if $tabledata
 else	{
 	// echo '<br/><div style="text-align:center;"><strong>Please click the settings option and add your database info.<br/>Double check your info including your host if you are still seeing this message after saving your settings.</strong></div>';

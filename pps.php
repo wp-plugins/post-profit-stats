@@ -3,19 +3,19 @@
 Plugin Name: Post Profit Stats
 Plugin URI: http://slickremix.com/
 Description: Do you pay authors for page views? Let our plugin calculate the amount per post view and give you totals by date.
-Version: 1.0.3
+Version: 1.0.4
 Author: SlickRemix
 Author URI: http://slickremix.com/
 Requires at least: wordpress 3.4.0
-Tested up to: wordpress 3.8
-Stable tag: 1.0.3
+Tested up to: wordpress 3.8.1
+Stable tag: 1.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
  * @package    			Post Profit Stats
- * @category   			extenstion
+ * @category   			extension
  * @author     		    SlickRemix
- * @copyright  			Copyright (c) 2013 SlickRemix
+ * @copyright  			Copyright (c) 2014 SlickRemix
 
 If you need support or want to tell us thanks please contact us at info@slickremix.com or use our support forum on slickremix.com
 This is the main file for building the plugin into wordpress
@@ -96,7 +96,7 @@ register_activation_hook(__FILE__,'slick_post_profit_stats_db_install');
 function my_slick_pps_script_enqueuer() {
    // nothing in this script yet, just prepped for future use.	
    wp_register_script( "my_ppsChecker_script", WP_PLUGIN_URL.'/post-profit-stats/admin/js/my_ppsChecker_script.js', array('jquery') );
-   wp_localize_script( 'my_ppsChecker_script', 'myPPSAjax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' )));         
+   wp_localize_script( 'my_ppsChecker_script', 'myPPSAjax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' )));        
 
    wp_enqueue_script( 'jquery' );
    wp_enqueue_script( 'my_ppsChecker_script' );
