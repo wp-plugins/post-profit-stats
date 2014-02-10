@@ -3,12 +3,12 @@
 Plugin Name: Post Profit Stats
 Plugin URI: http://slickremix.com/
 Description: Do you pay authors for page views? Let our plugin calculate the amount per post view and give you totals by date.
-Version: 1.0.4
+Version: 1.0.5
 Author: SlickRemix
 Author URI: http://slickremix.com/
 Requires at least: wordpress 3.4.0
 Tested up to: wordpress 3.8.1
-Stable tag: 1.0.4
+Stable tag: 1.0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -113,10 +113,10 @@ if(is_single())
 
 <script type="text/javascript">
 	jQuery(document).ready(function(){
-		
-		var postID = '<?php echo the_ID(); ?>';
+		<?php global $wp_query; ?>
+		var postID = '<?php echo $wp_query->post->ID; ?>';
 		console.log(postID);
-		var postAuthor = '<?php echo the_author_meta('ID') ?>';
+		var postAuthor = '<?php echo $wp_query->post->post_author; ?>';
 		console.log(postAuthor);
 		var createDate = '<?php echo date_i18n('Y-m-d'); ?>';
 		console.log(createDate);
