@@ -30,7 +30,7 @@ Setting this up could not be easier. Simply add the amount per view you are payi
 
 = The Enterprise Extension =
   1. Track all Post Views in a SEPERATE DATABASE from your WordPress install. The advantage of a separate database is that you do not take up a lot of space in the database counting views and slowing down your website. We have made it so easy that all you have to do is add a database to your server and fill in the connection info in the settings panel of the setting page! The extension does the rest of the leg work. Yup, It’s that easy! This extension also lets you set a different payment amount per post view to each individual author on the user profile page.
-  2. Take a look here for [Enterprise Extension](http://www.slickremix.com/product/post-profit-stats-enterprise-extension/). 
+  2. Take a look here for [Enterprise Extension](http://www.slickremix.com/product/post-profit-stats-enterprise-extension/). Note: You must have the Pro version installed before upgrading to the Enterprise version.
 
 = Tests =
 We've also done the following tests to make sure the view counts are as accurate as possible. Here are a few. Again even if you have a caching plugin installed this plugin will still track views, similar to google.
