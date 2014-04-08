@@ -320,6 +320,9 @@ a.im-done:hover, .upload_image_button:hover, .pps-settings-admin-submit-btn:hove
 	line-height:23px;
 	
 }
+#backupDBpps {
+margin-top:15px;
+}
 .pps-help-admin-wrap h2 {
 	color: #CC0303;
 	font-size: 23px;
@@ -337,6 +340,10 @@ a.im-done:hover, .upload_image_button:hover, .pps-settings-admin-submit-btn:hove
 	margin-bottom:10px;
 	font-size: 18px;
 	color:#555; 
+}
+
+div.error, div.updated {
+margin: 20px 12px 0 0;
 }
 .pps-help-admin-wrap a {
 	text-decoration: none;

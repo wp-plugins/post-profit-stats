@@ -1,6 +1,6 @@
 <?php
 function pps_settings_page(){
-global $wpdb;
+global $wpdb, $pps_new_table_name;
 
 include('pps-settings-checked.php');
 
@@ -25,22 +25,22 @@ $settodate = $_POST['to'];
 
 // THIS IS THE ENTERPRISE VERSION
 if(is_plugin_active('post-profit-stats-ent/post-profit-stats-ent.php')) { 
-	global $slickpps_ent_table_name;
+	global $slickpps_ent_table_name_new;
 	global $slickpps_db;
 	
 	if($notset = false) {
 	
 		$select = "
-		SELECT *,count(*) as countslick
-		FROM $slickpps_ent_table_name
+		SELECT *, SUM(hit_count) as 'view_count'
+		FROM $slickpps_ent_table_name_new
 		WHERE create_date >='".$_POST['from']."' 
 		AND create_date<='".$_POST['to']."' 
 		GROUP BY post_id desc, post_author
 		";
 	} else {
 		$select = "
-		SELECT *,count(*) as countslick
-		FROM $table_name 
+		SELECT *, SUM(hit_count) as 'view_count'
+		FROM $slickpps_ent_table_name_new
 		WHERE create_date >='".$_POST['from']."' 
 		AND create_date<='".$_POST['to']."'
 		GROUP BY post_id desc, post_author 
@@ -50,21 +50,20 @@ if(is_plugin_active('post-profit-stats-ent/post-profit-stats-ent.php')) {
 	$tabledata = $slickpps_db->get_results($select);
 }// CLOSE ENTERPRISE VERSION
 else	{
-	$table_name = $wpdb->prefix . "slick_post_profit_stats";
 	
 	if( $notset == false) {
 	
 		$select = "
-		SELECT *,count(*) as countslick
-		FROM $table_name
+		SELECT *, SUM(hit_count) as 'view_count'
+		FROM $pps_new_table_name
 		WHERE create_date >='".$_POST['from']."' 
 		AND create_date<='".$_POST['to']."' 
 		GROUP BY post_id desc, post_author
 		";
 	} else {
 		$select = "
-		SELECT *,count(*) as countslick
-		FROM $table_name 
+		SELECT *, SUM(hit_count) as 'view_count'
+		FROM $pps_new_table_name 
 		WHERE create_date >='".$_POST['from']."' 
 		AND create_date<='".$_POST['to']."'
 		GROUP BY post_id desc, post_author 
@@ -78,27 +77,18 @@ else	{
 ?>
 <?php
 $excluded = "0";  // To exclude IDs 1
-     
+    
 
 ?>
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css" />
-<script type="text/javascript">
-jQuery(document).bind("mobileinit", function () {
-    jQuery.mobile.ajaxEnabled = false;
-});
-</script>
-<script src="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.js"></script>
-<script type="text/javascript">
-jQuery( "#close-settings-panel" ).panel( "close" );
-</script>
 <div data-role="page" id="page" style="position:relative;">
+
   <div data-role="header" data-theme="c" class="sr-header"><a href="#mypanel" class="ui-btn-right header-settings-btn" style="margin-right: 35px; margin-top: 15px;" data-role="button" data-theme="b" data-icon="bars" data-display="overlay">Settings & Info</a>
   
 <h2><?php if(is_plugin_active('post-profit-stats-pro/post-profit-stats-pro.php')) {
      
     $customPageName =  get_option('my_option_name55');
     if ($customPageName == ' ' || $customPageName == '') { ?> 
-    Post Profit Stats 
+    Post Profit Stats
 <?php } 
     else { 
          echo get_option('my_option_name55');
@@ -111,18 +101,17 @@ jQuery( "#close-settings-panel" ).panel( "close" );
     <div class="clear"></div>
     <form method="post" action="admin.php?page=pps-settings-page" data-theme="c" id="slick-date-selector">
       <div data-role="fieldcontain" class="slickpps-start-date-input-wrap">
-        <label for="start_date" >From: </label>
-        <input class="date-pick"  data-role="none" data-mini="true" type="date" name="from" data-theme="c" id="from" value="<?php if(!empty($setfromdate)) {echo $setfromdate; $setfromdate = str_replace('-', '', $setfromdate);} else {echo date_i18n('Y-m-d');}  ?>" />
-        <!--want the date to be monthly, use this -> date('Y-m-d',strtotime("-1 month")); --> 
+        <label for="start_date" >From</label><input class="date-pick date-input"  data-role="date" data-mini="true" type="text" name="from"  id="from" value="<?php if(!empty($setfromdate)) {echo $setfromdate;} else {echo date_i18n('Y-m-d');}  ?>" />
+        <!--want the date to be monthly, use this -> date('Y-m-d',strtotime("-1 month")); -->  
       </div>
       <div data-role="fieldcontain" class="slickpps-end-date-input-wrap">
-        <label for="end_date">To: </label>
-        <input type="date"    data-role="none" data-mini="true" class="date-pick" name="to" data-theme="c" id="to" value="<?php if(!empty($settodate)) {echo $settodate; $settodate = str_replace('-', '', $settodate);} else {echo date_i18n('Y-m-d');} ?>" />
+        <label for="end_date">To</label><input type="text" data-role="date" data-mini="true" class="date-pick date-input" name="to"  id="to" value="<?php if(!empty($settodate)) {echo $settodate;} else {echo date_i18n('Y-m-d');} ?>" />
       </div>
       <div class="slickpps-submit-date-search-input-wrap">
         <input type="submit"  data-inline="true" class="button" data-theme="c" value="<?php _e('Submit') ?>" />
       </div>
-      <div class="clear"></div>
+      <div class="clear"></div>  
+
     </form>
   </div>
   <div data-role="content" class="sr-content">
@@ -143,7 +132,7 @@ jQuery( "#close-settings-panel" ).panel( "close" );
 	$views_count = 0;
 	$profits_count = 0;
 	$slickremixCountX = 0;
-	$comments_counts == 0;
+	$comments_counts = 0;
 	$i =1;
 	$post_counter = 0;
 
@@ -158,7 +147,7 @@ if ($tabledata)	{
 	  $data_author = $data->post_author;
 	  $user_profile_field= esc_attr( get_user_meta( $data_author, 'pps_percentage',true));
 	  $comments_counts = $posts->comment_count;
-	  $views_count = $data->countslick;
+	  $views_count = $data->view_count;
 	  
 		  $amount_per_view = get_option('my_option_name1');
 		  
@@ -370,4 +359,11 @@ if ($pageno == $lastpage) {
   <?php include('includes/panel.php'); ?>
 </div>
 <!--/page-->
-<?php } ?>
+
+<?php 
+	//Merge old DB wit new.
+	if (isset($_POST['pps_merge_db'])) { 
+		merge_pps_old_new_dbs();
+	}
+} 
+?>

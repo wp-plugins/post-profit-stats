@@ -1,15 +1,17 @@
 === Post Profit Stats ===
 Contributors: slickremix
-Tags:  Posts, Profit, Sales, Post Count, Stats, Statistics, WordPress Stats, Views, plugin, pages, posts, page, user, authors, author, wp stats, page views, track, tracking, jetpack, jetpack stats, profit, news
+Tags:  Posts, Profit, Sales, Post Count, Stats, Statistics, WordPress Stats, Views, plugin, pages, posts, page, user, authors, author, wp stats, page views, track, tracking, jetpack, jetpack stats, profit, news, co athors, multiple authors, pay, money
 Requires at least: 3.5.0
 Tested up to: 3.8.1
-Stable tag: 1.0.5
+Stable tag: 1.0.6
 License: GPLv2 or later
 
 Do you pay authors for page views? Let our plugin calculate the amount per post view and give you totals by date.
 
 == Description ==
 See the total number of post views per author with detailed totals and grand totals. You can also sort by date.
+
+NEW! View stats from browser and device types. And now by using the Co-Authors Plus plugin you can now assign and track multiple authors per post.
 
 Setting this up could not be easier. Simply add the amount per view you are paying your authors or whomever, and that’s it! Our system will calculate the total number of views your webpage has received and multiply that by the amount you entered. [Read more](http://www.slickremix.com/2013/07/30/why-use-post-profits-stats/) about how you can really make money with this plugin! 
 
@@ -59,6 +61,19 @@ Technical Note: This plugin has been tested and works with bbpress.
   * Extract the zip file and just drop the contents in the wp-content/plugins/ directory of your WordPress installation and then activate the Plugin from Plugins page. 
 
 == Changelog ==
+= Version 1.0.6 April 8th, 2014 =
+ * NOTE: NO Browser Stats were recorded version 1.0.5 or earlier. Users who decide to upgrade the database please note. When you update the database your old total hit count will be added to the ??? (unknown browser) and desktop device to keep future stats accurate. If you don't like this, simply do not update the database just delete the old one and you will start over fresh.
+ * NEW: Our plugin now creates one row per day for a user's post in the database and updates the hit counts instead of creating a row for each hit making the database size decrease dramatically.
+ * NEW: jQuery Mobile 1.4.2 update for UI and more.
+ * NEW: View Browsers Stats for Safari, Firefox, Chrome, IE, Opera. You can also view the stats from the devices that the views are coming from like mobile, tablet, video game consoles and desktop computers.
+ * NEW: By installing the co authors plus plugin you can now add and track multiple authors to your posts. When you do so, go to your post page and you will now see instructions on how it works. This method is a way for owners to get multiple authors to help promote posts and track their stats.
+ * NEW: Option to hide the browser stats for authors.
+ * NEW: Option to hide the POST ID edit link for authors when they are looking at the detailed stats.
+ * NEW: Option to show a note to all authors on the author detail stats page.
+ * NOTICE: We said it before and we'll say it again... Our plugin works with cache plugins!
+ * PRO Verions Note: You must update the FREE version before updating the PRO version.
+ * ENTERPRISE Verions Note: You will need to re-enter your databse name, user and password after updating the FREE version.
+ 
 = Version 1.0.5 February 10th, 2014 =
  * FIXED: Count issue when site has Recent Posts on page too.
  
