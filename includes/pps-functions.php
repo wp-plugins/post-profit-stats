@@ -160,19 +160,20 @@ function pps_code_post_options( $post ) {
  ?>
 <style type="text/css">
 	.pps-inst-wrap  {
-		padding-bottom:15px;
-		border-bottom:1px solid #eee;
+	}
+	.pps-list-of-authors-wrap  {
+		border-top:1px solid #eee;
+		padding-top:0px;
 	}
 	ol.pps-list-of-authors li input {
 		margin-top: 5px !important;
 		margin-left: -17px;
-}
+	}
 	ol.pps-list-of-authors li a  {
 		text-decoration:none !important;
 	}
 	ol.pps-list-of-authors {
 		margin-top:20px !important; 
-		
 	}
 	ol.pps-list-of-authors li {
 		margin-bottom:10px !important;
@@ -182,10 +183,11 @@ function pps_code_post_options( $post ) {
      <div class="pps-inst-wrap">
          <ol class="pps-multiple-author-instructions">
              <li>Install the <a href="http://wordpress.org/plugins/co-authors-plus/" target="_blank">Co-Authors Plus</a> Plugin and assign all the authors you want to this post and publish the post.</li>
-             <li>Now the Author or Admin can copy the link below to give out for this post to be promoted.</li>
-          </ol>  <p><strong>Note: Only the first author in the list will get the hit count on this post if you don't use a custom tracking link below.</strong></p> 
+             <li>Now the Author or Admin can copy the link below (when co-authors plus plugin is active) to promote the post.</li>
+          </ol>  <p><strong>Note: Only the first author in the list will get the hit count on this post if you don't use a custom tracking link.</strong></p> 
      </div> 
-     
+<?php if(is_plugin_active('co-authors-plus/co-authors-plus.php')) { ?>  
+    <div class="pps-list-of-authors-wrap">
      <ol class="pps-list-of-authors">
        <?php 
 			global $post;
@@ -208,11 +210,13 @@ function pps_code_post_options( $post ) {
 				$count++;
 			endforeach;
 		  ?></ol>
-           <script type="application/javascript">
-		jQuery(".pps_custom_permalink").on("click", function () {
-   			jQuery(this).select();
-		});
-	</script>
+         </div><!-- /pps-list-of-authors -->
+<script type="application/javascript">
+	jQuery(".pps_custom_permalink").on("click", function () {
+		jQuery(this).select();
+	});
+</script>
  <?php
-}
+	} 
+} // end if co-athours plus plugin is active
 ?>

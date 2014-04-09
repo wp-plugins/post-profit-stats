@@ -3,12 +3,12 @@
 Plugin Name: Post Profit Stats
 Plugin URI: http://slickremix.com/
 Description: Do you pay authors for page views? Let our plugin calculate the amount per post view and give you totals by date.
-Version: 1.0.6
+Version: 1.0.7
 Author: SlickRemix
 Author URI: http://slickremix.com/
 Requires at least: wordpress 3.4.0
 Tested up to: wordpress 3.8.1
-Stable tag: 1.0.6
+Stable tag: 1.0.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -32,17 +32,22 @@ global $pps_new_table_name;
 $pps_new_table_name = $wpdb->prefix . "slick_post_profit_stats2";
 
 //Table Version
-add_option( "slickpps_table_version", "1.8" );
+add_option( "slickpps_table_version", "2.0" );
 
+//Table Version
 global $slickpps_table_version;
-$slickpps_table_version = "2.5";
+$slickpps_table_version = "2.0";
+
+add_option( "slickpps_old_table_exists", "no_old_table_exists" );
+// enterprise version add_option
+add_option( "slickpps_ent_old_table_exists", "no_old_table_exists" );
+
+// Commenting out becase don't think we are using this anymore
+//add_option( "slickpps_db_version", "3.5" );
 
 //Database Version
-//add_option( "slickpps_db_version", "3.5" );
-add_option( "slickpps_old_table_exists", "no_old_table_exists" );
-
-global $slickpps_db_version;
-$slickpps_db_version = "4.6";
+// global $slickpps_db_version;
+// $slickpps_db_version = "2.0";
 
 // Include admin
 include( 'admin/pps-system-info.php' );
@@ -125,8 +130,8 @@ function slick_post_profit_stats5_db_install () {
 	
 	require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
 	dbDelta( $slicksql );
-	
-	add_option( "slickpps_db_version", $slickpps_db_version );
+	// Commenting out becase don't think we are using this anymore
+	// add_option( "slickpps_db_version", $slickpps_db_version );
 	}
 
 } // END slick_post_profit_stats5_db_install
@@ -174,10 +179,11 @@ function view_site_description(){
 	// This contains the browser and device check			
 	require_once(ABSPATH . 'wp-content/plugins/post-profit-stats/includes/browser-stats-functions.php');
 			
-		if ( $user_role != 'administrator' ) {
-			$create_date = date_i18n('Y-m-d');
-			$current_user = wp_get_current_user();
-			$user_role = $current_user->roles[0];
+		$create_date = date_i18n('Y-m-d');
+		$current_user = wp_get_current_user();
+		$user_role = $current_user->roles[0];
+			
+		if ($user_role != 'author' && $user_role != 'administrator' && $user_role != 'uploader' && $user_role != 'editor' && $user_role != 'contributor') {	
 				$insert = "INSERT IGNORE INTO " . $pps_new_table_name . "( post_id, post_author, create_date, hit_count, {$browser_column}, {$device_column} ) VALUES (" . $_POST['post_id'] . ",'" . $_POST['post_author'] . "','" . $create_date . "','1','1','1') 
 				ON DUPLICATE KEY UPDATE hit_count=hit_count + 1, {$browser_column}= {$browser_column} + 1, {$device_column}= {$device_column} + 1 
 				";
@@ -299,7 +305,6 @@ function merge_pps_old_new_dbs(){
 					  }
 				  
 				return $final_merge_array;
-			}
-			  			
-}
- ?>
+			}	  			
+	}
+?>
