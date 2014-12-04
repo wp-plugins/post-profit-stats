@@ -2,8 +2,8 @@
 Contributors: slickremix
 Tags:  Posts, Profit, Sales, Post Count, Stats, Statistics, WordPress Stats, Views, plugin, pages, posts, page, user, authors, author, wp stats, page views, track, tracking, jetpack, jetpack stats, profit, news, co authors, multiple authors, pay, money
 Requires at least: 3.5.0
-Tested up to: 4.0
-Stable tag: 1.0.9
+Tested up to: 4.0.1
+Stable tag: 1.1.0
 License: GPLv2 or later
 
 Do you pay authors for page views? Let our plugin calculate the amount per post view and give you totals by date.
@@ -61,6 +61,9 @@ Technical Note: This plugin has been tested and works with bbpress.
   * Extract the zip file and just drop the contents in the wp-content/plugins/ directory of your WordPress installation and then activate the Plugin from Plugins page. 
 
 == Changelog ==
+= Version 1.1.0 Thurdsay December 4th, 2014 =
+ * NEW: Menu icon in wp-admin 
+ 
 = Version 1.0.9 Thurdsay June 5th, 2014 =
  * FIXED: License Manager. If you don't have a premium version for this plugin then you don't need to worry about updating to this version.
  
