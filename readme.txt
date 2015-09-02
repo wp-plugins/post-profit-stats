@@ -1,8 +1,8 @@
 === Post Profit Stats ===
 Contributors: slickremix
-Tags:  Posts, Profit, Sales, Post Count, Stats, Statistics, WordPress Stats, Views, plugin, pages, posts, page, user, authors, author, wp stats, page views, track, tracking, jetpack, jetpack stats, profit, news, co authors, multiple authors, pay, money
+Tags:  Posts, Profit, Sales, Post Count, Stats, Statistics, WordPress Stats, Views, plugin, pages, posts, page, user, authors, author, wp stats, page views, track, tracking, jetpack, jetpack stats, profit, news, co authors, multiple authors, pay, money, stats plugin
 Requires at least: 3.5.0
-Tested up to: 4.2.1
+Tested up to: 4.3
 Stable tag: 1.1.0
 License: GPLv2 or later
 
